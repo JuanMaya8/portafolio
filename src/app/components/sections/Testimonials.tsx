@@ -20,19 +20,19 @@ const Testimonials: React.FC = () => {
       name: "Jack Limas",
       // Comentario: Ajuste del texto ilegible: "Trabajo honesto, comprometido y con visión de futuro. Un activo en cualquier equipo."
       quote: "Honest, committed work with a future vision. An asset to any team.",
-      source: "Fragmento basado en texto ilegible"
+      source: ""
     },
     {
-      name: "Juan Mars",
+      name: "Juan Mora",
       // Comentario: Ajuste del texto ilegible: "Siempre sabe escuchar, colaborar y tiene una comunicación que genera confianza en el silencio."
       quote: "Always knows how to listen, collaborate, and has communication that generates trust in silence.",
-      source: "Fragmento basado en texto ilegible"
+      source: ""
     },
     {
       name: "David Ramirez",
       // Comentario: Ajuste del texto ilegible: "La velocidad y la compresión del problema demuestran su profesionalismo. Siempre cumple el propósito."
       quote: "Speed and problem comprehension demonstrate his professionalism. Always fulfills the purpose.",
-      source: "Fragmento basado en texto ilegible"
+      source: ""
     },
   ];
   
@@ -41,7 +41,7 @@ const Testimonials: React.FC = () => {
       // Comentario: Aquí se usaría un diccionario más completo. Por simplicidad, se traduce solo si es "es".
       if (lang === 'es') {
           if (name === "Jack Limas") return "Trabajo honesto, comprometido y con visión de futuro. Un activo en cualquier equipo.";
-          if (name === "Juan Mars") return "Siempre sabe escuchar, colaborar y tiene una comunicación que genera confianza en el silencio.";
+          if (name === "Juan Mora") return "Siempre sabe escuchar, colaborar y tiene una comunicación que genera confianza en el silencio.";
           if (name === "David Ramirez") return "La velocidad y la compresión del problema demuestran su profesionalismo. Siempre cumple el propósito.";
       }
       // Comentario: Devuelve la versión en inglés por defecto o para otros casos
@@ -55,7 +55,7 @@ const Testimonials: React.FC = () => {
     <section id="testimonials" className="py-20 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Comentario: Usa <h2> para el título de la sección */}
-        <h2 className="text-3xl font-extrabold text-center mb-12 border-b-2 border-indigo-500 pb-2">
+        <h2 className="text-3xl font-extrabold text-center mb-12 border-b-2  pb-2">
           {t.testimonials} {/* Testimonios */}
         </h2>
         
@@ -63,7 +63,7 @@ const Testimonials: React.FC = () => {
         <figure className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {testimonialList.map((testimonial, index) => (
             // Comentario: Usa <article> para cada testimonio
-            <article key={index} className="p-6 bg-gray-50 dark:bg-gray-800 rounded-lg shadow-md border-t-4 border-indigo-500">
+            <article key={index} className="p-6 bg-gray-50 dark:bg-gray-800 rounded-lg shadow-md border-t-4 ">
               
               {/* Comentario: Usa <blockquote> para el testimonio */}
               <blockquote className="italic text-gray-700 dark:text-gray-300 mb-4 h-32">
@@ -81,7 +81,7 @@ const Testimonials: React.FC = () => {
                 
                 {/* Comentario: Información del Testimonio */}
                 <div>
-                    <cite className="not-italic font-bold text-lg text-indigo-600 dark:text-indigo-400 block">
+                    <cite className="not-italic font-bold text-lg  dark:text-indigo-400 block">
                         {testimonial.name}
                     </cite>
                     <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">

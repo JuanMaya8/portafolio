@@ -12,15 +12,14 @@ import Testimonials from '../sections/Testimonials';
 // Comentario: Componente principal de la página, tipado con NextPage
 const HomePage: NextPage = () => {
   return (
-    // Comentario: Layout proporciona Header, Footer y Contextos
-    <Layout>
+    <>
       <Hero />
       <AboutMe />
       <Projects />
       <Hobbies />
       <WhyMe />
       <Testimonials />
-    </Layout>
+    </>
   );
 };
 

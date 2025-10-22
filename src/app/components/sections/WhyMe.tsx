@@ -20,7 +20,7 @@ const WhyMe: React.FC = () => {
     <section id="risk-it" className="py-20 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Comentario: Usa <h2> para el título de la sección */}
-        <h2 className="text-3xl font-extrabold text-center mb-12 border-b-2 border-indigo-500 pb-2">
+        <h2 className="text-3xl font-extrabold text-center mb-12 border-b-2 pb-2">
           {t.whyMeTitle} 
         </h2>
         
@@ -37,7 +37,7 @@ const WhyMe: React.FC = () => {
           </p>
 
           {/* Cita: Software es gente, no solo código */}
-          <blockquote className="border-l-4 border-indigo-500 pl-4 italic text-gray-600 dark:text-gray-300">
+          <blockquote className="border-l-4  pl-4 italic text-gray-600 dark:text-gray-300">
             {t.whyMeText3}
           </blockquote>
 
@@ -51,7 +51,7 @@ const WhyMe: React.FC = () => {
             {/* Comentario: Ahora <menu> es un hermano de <p>, lo cual es válido */}
             <menu className="flex flex-wrap gap-2"> 
               {softSkills.map((skill, index) => (
-                <li key={index} className="inline-block bg-indigo-100 dark:bg-indigo-900 text-indigo-700 dark:text-indigo-300 px-3 py-1 rounded-full text-base font-medium">
+                <li key={index} className="inline-block bg-indigo-100 dark:bg-indigo-900  dark:text-indigo-300 px-3 py-1 rounded-full text-base font-medium">
                   {skill}
                 </li>
               ))}
@@ -59,7 +59,7 @@ const WhyMe: React.FC = () => {
           </section>
 
           {/* Párrafo 4: Valor Técnico y Humano */}
-          <p className="font-semibold text-indigo-600 dark:text-indigo-400">
+          <p className="font-semibold  dark:text-indigo-400">
             {t.whyMeText5}
           </p>
         </article>

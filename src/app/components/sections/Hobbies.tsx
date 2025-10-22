@@ -3,7 +3,6 @@
 "use client";
 import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
-// Comentario: Iconos de ejemplo para Hobbies (se asume @heroicons/react está instalado)
 import { CameraIcon, ChatBubbleOvalLeftEllipsisIcon, FireIcon } from '@heroicons/react/24/outline'; 
 
 const Hobbies: React.FC = () => {
@@ -11,9 +10,9 @@ const Hobbies: React.FC = () => {
 
   // Comentario: Lista de hobbies (con iconos wireframe)
   const hobbyList = [
-    { icon: <CameraIcon className="w-8 h-8 text-indigo-500" />, title: "Explorar la Naturaleza" },
-    { icon: <ChatBubbleOvalLeftEllipsisIcon className="w-8 h-8 text-indigo-500" />, title: "Compartir Conversaciones" },
-    { icon: <FireIcon className="w-8 h-8 text-indigo-500" />, title: "Cocinar Nuevo" },
+    { icon: <CameraIcon className="w-8 h-8 " />, title: "Explorar la Naturaleza" },
+    { icon: <ChatBubbleOvalLeftEllipsisIcon className="w-8 h-8 " />, title: "Compartir Conversaciones" },
+    { icon: <FireIcon className="w-8 h-8 " />, title: "Cocinar Nuevo" },
   ];
 
   return (
@@ -22,7 +21,7 @@ const Hobbies: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Comentario: Usa <h2> para el título de la sección */}
         <hgroup className="text-center mb-12">
-          <h2 className="text-3xl font-extrabold border-b-2 border-indigo-500 pb-2 inline-block">
+          <h2 className="text-3xl font-extrabold border-b-2  pb-2 inline-block">
             {t.hobbiesTitle} {/* Un poco de mi fuera de una maquina */}
           </h2>
           <p className="mt-4 text-xl text-gray-600 dark:text-gray-300">
@@ -51,7 +50,7 @@ const Hobbies: React.FC = () => {
               {t.hobbiesText2} {/* Esos espacios me ayudan a pensar mejor... */}
             </p>
             
-            <p className="font-semibold text-indigo-600 dark:text-indigo-400">
+            <p className="font-semibold  dark:text-indigo-400">
               {t.hobbiesText3} {/* Porque al final, programamos para personas... */}
             </p>
 

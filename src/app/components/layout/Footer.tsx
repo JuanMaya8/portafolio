@@ -12,22 +12,21 @@ const Footer: React.FC = () => {
     <footer className="bg-gray-800 dark:bg-gray-950 text-white py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         
-        {/* Comentario: Usa <section> para la información de contacto [cite: 36, 37, 38] */}
-        <section id="contact" className="mb-4">
-          <hgroup>
-            <h3 className="text-xl font-bold mb-2">{t.contact}</h3> 
-            <p className="text-sm">
-              {t.email}: <a href="mailto:Banmayatuamese@gmail.com" className="text-indigo-400 hover:text-indigo-300">Banmayatuamese@gmail.com</a>
-            </p>
-          </hgroup>
-        </section>
+        {/* Se eliminó la sección de contacto para evitar duplicidad. */}
         
         {/* Comentario: Enlaces de Redes Sociales (Wireframe) */}
-        <figure className="flex justify-center space-x-4">
+        <figure className="flex justify-center items-center space-x-4">
           {/* Comentario: LinkedIn (Icono simulado) */}
-          <a href="#" aria-label="LinkedIn" className="text-xl hover:text-indigo-400 transition-colors">
+          <a href="#" aria-label="LinkedIn" className="text-xl hover:text-indigo-400 transition-colors flex items-center gap-2">
             🔗 (in)
           </a>
+
+          {/* Enlace de correo junto a LinkedIn */}
+          <a href="mailto:juanmayabusiness@gmail.com" aria-label="Enviar correo" className="text-sm text-indigo-400 hover:text-indigo-300 transition-colors flex items-center gap-2">
+            ✉️
+            <span className="hidden sm:inline">juanmayabusiness@gmail.com</span>
+          </a>
+
           {/* Comentario: Otro Icono (Simulado) [cite: 40] */}
           <a href="#" aria-label="Other Social Media" className="text-xl hover:text-indigo-400 transition-colors">
             08

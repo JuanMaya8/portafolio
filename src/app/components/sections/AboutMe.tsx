@@ -11,9 +11,9 @@ const AboutMe: React.FC = () => {
   return (
     // Comentario: Usa <section> y la ID 'who-am-i' para navegación.
     <section id="who-am-i" className="py-20 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Comentario: Usa <h2> para el título de la sección */}
-        <h2 className="text-3xl font-extrabold text-center mb-12 border-b-2 border-indigo-500 pb-2">
+        <h2 className="text-3xl font-extrabold text-center mb-12 border-b-2  pb-2">
           {t.aboutTitle} {/* Quien soy */}
         </h2>
         
@@ -24,7 +24,7 @@ const AboutMe: React.FC = () => {
             {t.aboutText1} {/* Soy un futuro ingeniero de software que tiene muchas expectativas... */}
           </p>
           {/* Párrafo 2 (Cita) */}
-          <blockquote className="border-l-4 border-indigo-500 pl-4 italic text-gray-600 dark:text-gray-300">
+          <blockquote className="border-l-4  pl-4 italic text-gray-600 dark:text-gray-300">
             {t.aboutText2} {/* Me motiva entender cómo funcionan las cosas y mejorar lo que ya existe. */}
           </blockquote>
         </article>
@@ -38,7 +38,7 @@ const AboutMe: React.FC = () => {
             📊
           </span>
         </figure>
-      </div>
+      </section>
     </section>
   );
 };
