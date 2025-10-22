@@ -67,7 +67,7 @@ const Testimonials: React.FC = () => {
               
               {/* Comentario: Usa <blockquote> para el testimonio */}
               <blockquote className="italic text-gray-700 dark:text-gray-300 mb-4 h-32">
-                "{getTranslatedQuote(testimonial.name, lang)}"
+                &quot;{getTranslatedQuote(testimonial.name, lang)}&quot;
               </blockquote>
               
               <figcaption className="pt-4 border-t border-gray-200 dark:border-gray-700 flex items-center">

@@ -142,7 +142,7 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     try {
       const stored = typeof window !== 'undefined' ? localStorage.getItem('lang') : null;
       return stored === 'en' ? 'en' : 'es';
-    } catch (e) {
+    } catch {
       return 'es';
     }
   });
@@ -151,7 +151,7 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   useEffect(() => {
     try {
       localStorage.setItem('lang', lang);
-    } catch (e) {
+    } catch {
       // noop
     }
   }, [lang]);

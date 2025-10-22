@@ -2,6 +2,7 @@
 
 "use client";
 import React from 'react';
+import Image from 'next/image';
 import { useLanguage } from '../context/LanguageContext';
 
 const Hero: React.FC = () => {
@@ -28,11 +29,15 @@ const Hero: React.FC = () => {
         {/* Comentario: Lado de Imagen (Wireframe) */}
         <figure className="order-1 md:order-2 flex justify-center items-center">
           {/* Imagen del autor: reemplaza el wireframe por la imagen en public/dos_abajo.png */}
-          <img
-            src="/dos_abajo.png"
-            alt="Imagen de perfil"
-            className="w-64 h-64 sm:w-80 sm:h-80 object-cover "
-          />
+          <div className="relative w-64 h-64 sm:w-80 sm:h-80">
+            <Image
+              src="/dos_abajo.png"
+              alt="Imagen de perfil"
+              fill
+              className="object-cover"
+              priority
+            />
+          </div>
         </figure>
       </div>
     </main>
