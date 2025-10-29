@@ -2,6 +2,7 @@
 
 "use client";
 import React from 'react';
+import Image from 'next/image';
 import { useLanguage } from '../context/LanguageContext';
 
 // Sección "Quien soy"
@@ -26,15 +27,41 @@ const AboutMe: React.FC = () => {
           </blockquote>
         </article>
         
-        {/* Sección para la imagen de habilidades*/}
-        <figure className="mt-12 flex justify-center">
-          <span
-            aria-label="Placeholder for diagram or skills chart"
-            className="w-full h-48 bg-gray-200 dark:bg-gray-700 rounded-lg flex items-center justify-center text-4xl text-gray-500 dark:text-gray-400 border-2 border-dashed border-gray-400 dark:border-gray-500"
-          >
-            📊
-          </span>
-        </figure>
+        {/* Sección de imágenes con orden responsive */}
+        <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* En mobile: segunda imagen */}
+          <div className="md:order-2 flex justify-center">
+            <Image
+              src="/manos_arriba.png"
+              alt="Ilustración de manos arriba"
+              width={300}
+              height={300}
+              className="rounded-lg shadow-lg"
+            />
+          </div>
+          
+          {/* En mobile: tercera imagen */}
+          <div className="md:order-3 flex justify-center">
+            <Image
+              src="/yo_2.png"
+              alt="Segunda ilustración personal"
+              width={300}
+              height={300}
+              className="rounded-lg shadow-lg"
+            />
+          </div>
+
+          {/* En mobile: primera imagen */}
+          <div className="md:order-1 flex justify-center">
+            <Image
+              src="/yo_1.png"
+              alt="Primera ilustración personal"
+              width={300}
+              height={300}
+              className="rounded-lg shadow-lg"
+            />
+          </div>
+        </div>
       </section>
     </section>
   );

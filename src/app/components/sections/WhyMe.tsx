@@ -3,6 +3,7 @@
 "use client"; 
 
 import React from 'react';
+import Image from 'next/image';
 import { useLanguage } from '../context/LanguageContext';
 
 const WhyMe: React.FC = () => {
@@ -23,7 +24,9 @@ const WhyMe: React.FC = () => {
         </h2>
         
         {/* Contenedor principal de la justificación */}
-        <article className="space-y-6 text-lg leading-relaxed">
+        <div className="flex flex-col lg:flex-row gap-8 items-start">
+          {/* Columna de texto */}
+          <article className="space-y-6 text-lg leading-relaxed flex-1">
           {/* Párrafo 1: Tecnologías y Colaboración */}
           <p>
             {t.whyMeText1} 
@@ -58,7 +61,21 @@ const WhyMe: React.FC = () => {
           <p className="font-semibold  dark:text-indigo-400">
             {t.whyMeText5}
           </p>
-        </article>
+          </article>
+
+          {/* Columna de imagen */}
+          <div className="lg:w-1/3 flex-shrink-0">
+            <div className="sticky top-24 w-full">
+              <Image
+                src="/apuntando_una_abajo.png"
+                alt="Ilustración apuntando hacia abajo"
+                width={400}
+                height={400}
+                className="w-full h-auto "
+              />
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
