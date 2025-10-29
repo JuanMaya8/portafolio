@@ -67,7 +67,10 @@ const WhyMe: React.FC = () => {
           <div className="lg:w-1/3 flex-shrink-0">
             <div className="sticky top-24 w-full">
               <Image
-                src="/apuntando_una_abajo.png"
+                // En Vercel el sistema de archivos es case-sensitive.
+                // El archivo en `public/` se llama `Apuntando_una_abajo.png` (A mayúscula),
+                // por eso hay que usar la ruta exacta.
+                src="/Apuntando_una_abajo.png"
                 alt="Ilustración apuntando hacia abajo"
                 width={400}
                 height={400}

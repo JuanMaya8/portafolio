@@ -25,6 +25,9 @@ interface Translations {
   hobbiesText1: string;
   hobbiesText2: string;
   hobbiesText3: string;
+  hobby1Title: string;
+  hobby2Title: string;
+  hobby3Title: string;
   whyMeTitle: string;
   whyMeText1: string;
   whyMeText2: string;
@@ -68,6 +71,9 @@ const translations: Record<'es' | 'en', Translations> = {
     hobbiesText2:
       "These spaces help me think better, create with more meaning and remember that behind every line of code there is a story, an emotion, an intention. I believe that the balance between the technical and the human not only improves my work, but also makes me more aware of the impact of what I build.",
     hobbiesText3: "Because in the end, we program for people, and I never want to lose sight of that.",
+  hobby1Title: "Explore Nature",
+  hobby2Title: "Share Conversations",
+  hobby3Title: "Cook New Things",
     whyMeTitle: "Why risk it with me?",
     whyMeText1:
       "Riskying it with me is betting on a software engineer who not only masters technologies like Java, JavaScript, Python, C++ and HTML, but also understands the value of collaboration in diverse environments.",
@@ -107,6 +113,9 @@ const translations: Record<'es' | 'en', Translations> = {
     hobbiesText2:
       "Esos espacios me ayudan a pensar mejor, a crear con más sentido y a recordar que detrás de cada linea de código hay una historia, una emoción, una intención. Creo que el equilibrio entre lo técnico y lo humano no solo mejora mi trabajo, sino que me hace más consciente del impacto que puede tener lo que construyo.",
     hobbiesText3: "Porque al final, programamos para personas, y yo nunca quiero perder de vista eso.",
+  hobby1Title: "Explorar la Naturaleza",
+  hobby2Title: "Compartir Conversaciones",
+  hobby3Title: "Cocinar Nuevo",
     whyMeTitle: "¿Por que arriesgarse conmigo?",
     whyMeText1:
       "Arriesgarse conmigo es apostar por un ingeniero de software que no solo domina tecnologias como Java, JavaScript, Python, C++ y HTML, sino que también entiende el valor de la colaboración en entornos diversos.",
