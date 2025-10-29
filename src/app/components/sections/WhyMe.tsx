@@ -9,7 +9,7 @@ import { useLanguage } from '../context/LanguageContext';
 const WhyMe: React.FC = () => {
   const { t } = useLanguage();
 
-  // Lista de puntos clave de habilidades blandas extraídas de la traducción
+  // Lista de puntos clave de habilidades blandas extraídas
   const softSkills = [
     t.whyMeText4.split(': ')[1]?.split(',')[0]?.trim() || 'Empatía',
     t.whyMeText4.split(':')[1]?.split(',')[1]?.trim() || 'Proactividad',
@@ -42,10 +42,9 @@ const WhyMe: React.FC = () => {
             {t.whyMeText3}
           </blockquote>
 
-          {/* Párrafo 3: Habilidades Blandas (Estructura Corregida: p y menu son hermanos) */}
           <section className="space-y-4"> 
             <p>
-              {t.whyMeText4.split(':')[0]}: {/* Texto introductorio */}
+              {t.whyMeText4.split(':')[0]}: 
             </p>
             
             <menu className="flex flex-wrap gap-2"> 
@@ -57,7 +56,6 @@ const WhyMe: React.FC = () => {
             </menu>
           </section>
 
-          {/* Párrafo 4: Valor Técnico y Humano */}
           <p className="font-semibold  dark:text-indigo-400">
             {t.whyMeText5}
           </p>
@@ -67,9 +65,6 @@ const WhyMe: React.FC = () => {
           <div className="lg:w-1/3 flex-shrink-0">
             <div className="sticky top-24 w-full">
               <Image
-                // En Vercel el sistema de archivos es case-sensitive.
-                // El archivo en `public/` se llama `Apuntando_una_abajo.png` (A mayúscula),
-                // por eso hay que usar la ruta exacta.
                 src="/Apuntando_una_abajo.png"
                 alt="Ilustración apuntando hacia abajo"
                 width={400}

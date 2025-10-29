@@ -90,7 +90,7 @@ const translations: Record<'es' | 'en', Translations> = {
   },
   es: {
     portfolio: "Portafolio JDMB",
-    home: "HOME",
+    home: "CASA",
     whoAmI: "QUIEN SOY?",
     projects: "PROYECTOS",
     projectsTitle: "Algunos de mis proyectos",
