@@ -4,20 +4,17 @@
 import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
 
-// Comentario: Sección "Quien soy"
+// Sección "Quien soy"
 const AboutMe: React.FC = () => {
   const { t } = useLanguage();
 
   return (
-    // Comentario: Usa <section> y la ID 'who-am-i' para navegación.
-    <section id="who-am-i" className="py-20 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+    <section id="who-am-i" className="py-20 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 border-b-4 border-black dark:border-white">
       <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Comentario: Usa <h2> para el título de la sección */}
         <h2 className="text-3xl font-extrabold text-center mb-12 border-b-2  pb-2">
           {t.aboutTitle} {/* Quien soy */}
         </h2>
         
-        {/* Comentario: Usa <article> para el contenido */}
         <article className="space-y-6 text-lg leading-relaxed">
           {/* Párrafo 1 */}
           <p>
@@ -29,7 +26,7 @@ const AboutMe: React.FC = () => {
           </blockquote>
         </article>
         
-        {/* Comentario: Sección para la imagen o diagrama de habilidades (Wireframe) */}
+        {/* Sección para la imagen de habilidades*/}
         <figure className="mt-12 flex justify-center">
           <span
             aria-label="Placeholder for diagram or skills chart"

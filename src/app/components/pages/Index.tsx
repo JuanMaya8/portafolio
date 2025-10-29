@@ -9,7 +9,7 @@ import Hobbies from '../sections/Hobbies';
 import WhyMe from '../sections/WhyMe'; 
 import Testimonials from '../sections/Testimonials';
 
-// Comentario: Componente principal de la página, tipado con NextPage
+// Componente principal de la página
 const HomePage: NextPage = () => {
   return (
     <>

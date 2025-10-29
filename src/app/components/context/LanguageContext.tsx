@@ -4,7 +4,7 @@
 
 import React, { createContext, useState, useContext, useEffect } from 'react';
 
-// Comentario: Definición de la estructura de las traducciones basada en el contenido del PDF.
+// Definición de la estructura de las traducciones
 interface Translations {
   portfolio: string;
   home: string;
@@ -35,14 +35,14 @@ interface Translations {
   email: string;
 }
 
-// Comentario: Interfaz para el estado del contexto de idioma
+// Interfaz para el estado del contexto de idioma
 interface LanguageContextType {
   lang: 'es' | 'en';
   t: Translations; // Objeto de traducciones actual
   toggleLanguage: () => void;
 }
 
-// Diccionario de traducciones (limpio de tokens inválidos)
+// Diccionario de traducciones 
 const translations: Record<'es' | 'en', Translations> = {
   en: {
     portfolio: "JDMB Portfolio",
@@ -123,10 +123,8 @@ const translations: Record<'es' | 'en', Translations> = {
   },
 };
 
-// Creamos el contexto con un valor inicial tipado
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
-// Comentario: Hook para usar el contexto de idioma
 export const useLanguage = (): LanguageContextType => {
   const context = useContext(LanguageContext);
   if (!context) {
@@ -135,9 +133,7 @@ export const useLanguage = (): LanguageContextType => {
   return context;
 };
 
-// Comentario: Componente proveedor del idioma
 export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  // Estado inicial: intentamos leer lang desde localStorage
   const [lang, setLang] = useState<'es' | 'en'>(() => {
     try {
       const stored = typeof window !== 'undefined' ? localStorage.getItem('lang') : null;
@@ -147,7 +143,6 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     }
   });
 
-  // Sincronizar localStorage cuando cambie el idioma
   useEffect(() => {
     try {
       localStorage.setItem('lang', lang);
@@ -156,12 +151,12 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     }
   }, [lang]);
 
-  // Función para cambiar entre 'es' y 'en'
+  // cambiar entre 'es' y 'en'
   const toggleLanguage = () => {
     setLang((prevLang) => (prevLang === 'es' ? 'en' : 'es'));
   };
 
-  // Contenido de la traducción actual
+  //traducción actual
   const t = translations[lang];
   const value = { lang, t, toggleLanguage };
 

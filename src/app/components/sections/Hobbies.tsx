@@ -8,7 +8,7 @@ import { CameraIcon, ChatBubbleOvalLeftEllipsisIcon, FireIcon } from '@heroicons
 const Hobbies: React.FC = () => {
   const { t } = useLanguage();
 
-  // Comentario: Lista de hobbies (con iconos wireframe)
+  // Comentario: Lista de hobbies 
   const hobbyList = [
     { icon: <CameraIcon className="w-8 h-8 " />, title: "Explorar la Naturaleza" },
     { icon: <ChatBubbleOvalLeftEllipsisIcon className="w-8 h-8 " />, title: "Compartir Conversaciones" },
@@ -16,8 +16,7 @@ const Hobbies: React.FC = () => {
   ];
 
   return (
-    // Comentario: Usa <section> y la ID 'off-work' para navegación
-    <section id="off-work" className="py-20 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100">
+    <section id="off-work" className="py-20 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100 border-b-4 border-black dark:border-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Comentario: Usa <h2> para el título de la sección */}
         <hgroup className="text-center mb-12">
@@ -30,7 +29,7 @@ const Hobbies: React.FC = () => {
         </hgroup>
         
         <div className="grid md:grid-cols-2 gap-12 items-start">
-          {/* Comentario: Lado de Imagen (Wireframe) */}
+          {/* Lado de Imagen*/}
           <figure className="order-1 flex justify-center items-center">
             <span
               aria-label="Placeholder for image of a landscape or hobby activity"
@@ -40,7 +39,7 @@ const Hobbies: React.FC = () => {
             </span>
           </figure>
 
-          {/* Comentario: Lado de Texto y lista de Hobbies */}
+          {/* Lado de Texto y lista de Hobbies */}
           <article className="order-2 space-y-6 text-lg leading-relaxed">
             <p>
               {t.hobbiesText1} {/* Me gusta desconectarme para reconectarme... */}
@@ -54,13 +53,13 @@ const Hobbies: React.FC = () => {
               {t.hobbiesText3} {/* Porque al final, programamos para personas... */}
             </p>
 
-            {/* Comentario: Lista semántica para los hobbies */}
+            {/* Lista hobbies */}
             <menu className="flex flex-wrap gap-4 pt-4">
               {hobbyList.map((hobby, index) => (
                 <li key={index} className="flex items-center space-x-2 p-3 bg-white dark:bg-gray-900 rounded-xl shadow-lg">
-                  {/* Comentario: Icono (Wireframe) */}
+                  {/* Icono */}
                   {hobby.icon}
-                  {/* Comentario: Descripción del hobby */}
+                  {/* Descripción del hobby */}
                   <span className="font-medium text-gray-800 dark:text-gray-200">
                     {hobby.title}
                   </span>

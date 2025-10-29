@@ -8,15 +8,11 @@ const Footer: React.FC = () => {
   const { t } = useLanguage();
 
   return (
-    // Comentario: Usa <footer> como etiqueta semántica
     <footer className="bg-gray-800 dark:bg-gray-950 text-white py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         
-        {/* Se eliminó la sección de contacto para evitar duplicidad. */}
-        
-        {/* Comentario: Enlaces de Redes Sociales (Wireframe) */}
+        {/*  Enlaces de Redes Sociales (Wireframe) */}
         <figure className="flex justify-center items-center space-x-4">
-          {/* Comentario: LinkedIn (Icono simulado) */}
           <a href="#" aria-label="LinkedIn" className="text-xl hover:text-indigo-400 transition-colors flex items-center gap-2">
             🔗 (in)
           </a>
@@ -27,13 +23,11 @@ const Footer: React.FC = () => {
             <span className="hidden sm:inline">juanmayabusiness@gmail.com</span>
           </a>
 
-          {/* Comentario: Otro Icono (Simulado) [cite: 40] */}
           <a href="#" aria-label="Other Social Media" className="text-xl hover:text-indigo-400 transition-colors">
             08
           </a>
         </figure>
         
-        {/* Comentario: Información de Copyright */}
         <p className="mt-8 text-sm text-gray-400">
           &copy; {new Date().getFullYear()} {t.portfolio}. All rights reserved.
         </p>
