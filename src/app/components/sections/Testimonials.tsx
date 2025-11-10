@@ -28,7 +28,8 @@ const Testimonials: React.FC = () => {
       name: "Juan Mora",
       // "Siempre sabe escuchar, colaborar y tiene una comunicación que genera confianza en el silencio."
       quote: "Always knows how to listen, collaborate, and has communication that generates trust in silence.",
-      source: ""
+      source: "",
+      image: "/mora.png"
     },
     {
       name: "David Ramirez",
