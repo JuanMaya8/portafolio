@@ -35,7 +35,8 @@ const Testimonials: React.FC = () => {
       name: "David Ramirez",
       //"La velocidad y la compresión del problema demuestran su profesionalismo. Siempre cumple el propósito."
       quote: "Speed and problem comprehension demonstrate his professionalism. Always fulfills the purpose.",
-      source: ""
+      source: "",
+      image: "/ramirez.png"
     },
   ];
   
