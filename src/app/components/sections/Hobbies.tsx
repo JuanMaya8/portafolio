@@ -10,7 +10,7 @@ import { CameraIcon, ChatBubbleOvalLeftEllipsisIcon, FireIcon } from '@heroicons
 function Carousel() {
   const images: string[] = [
     '/carrusel_1.png',
-    '/carrusel_2.png',
+    '/carrusel_2.jpg',
     // '/carrusel_3.png',
   ];
 
