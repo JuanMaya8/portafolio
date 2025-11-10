@@ -19,7 +19,7 @@ const WhyMe: React.FC = () => {
   return (
     <section id="risk-it" className="py-20 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 border-b-4 border-black dark:border-white">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl font-extrabold text-center mb-12 border-b-2 pb-2">
+        <h2 className="text-3xl font-extrabold text-center mb-12 pb-2">
           {t.whyMeTitle} 
         </h2>
         
