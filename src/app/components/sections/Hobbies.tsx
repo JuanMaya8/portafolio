@@ -98,7 +98,7 @@ const Hobbies: React.FC = () => {
     <section id="off-work" className="py-20 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100 border-b-4 border-black dark:border-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <hgroup className="text-center mb-12">
-          <h2 className="text-3xl font-extrabold border-b-2  pb-2 inline-block">
+          <h2 className="text-3xl font-extrabold  pb-2 inline-block">
             {t.hobbiesTitle} {/* Un poco de mi fuera de una maquina */}
           </h2>
           <p className="mt-4 text-xl text-gray-600 dark:text-gray-300">
