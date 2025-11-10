@@ -8,6 +8,7 @@ import Projects from '../sections/Projects';
 import Hobbies from '../sections/Hobbies'; 
 import WhyMe from '../sections/WhyMe'; 
 import Testimonials from '../sections/Testimonials';
+import Contact from '../sections/Contact';
 
 // Componente principal de la página
 const HomePage: NextPage = () => {
@@ -19,7 +20,7 @@ const HomePage: NextPage = () => {
       <Hobbies />
       <WhyMe />
       <Testimonials />
-      
+      <Contact />
     </>
   );
 };
