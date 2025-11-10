@@ -19,6 +19,7 @@ const HomePage: NextPage = () => {
       <Hobbies />
       <WhyMe />
       <Testimonials />
+      
     </>
   );
 };
