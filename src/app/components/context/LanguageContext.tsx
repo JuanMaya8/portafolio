@@ -85,7 +85,7 @@ const translations: Record<'es' | 'en', Translations> = {
       "Furthermore, I stand out for soft skills that I consider essential: empathy to understand the needs of the team and the user, proactivity to anticipate problems and propose solutions, and resilience to adapt to changes without losing focus.",
     whyMeText5:
       "I am someone who adds value both technically and humanly, and who always seeks to contribute from both fronts.",
-    contact: "Contact",
+    contact: "CONTACT",
     email: "Email Address",
   },
   es: {
