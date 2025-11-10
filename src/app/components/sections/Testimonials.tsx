@@ -22,7 +22,7 @@ const Testimonials: React.FC = () => {
       // Comentario:"Trabajo honesto, comprometido y con visión de futuro. Un activo en cualquier equipo."
       quote: "Honest, committed work with a future vision. An asset to any team.",
       source: "",
-      image: "https://instagram.fpso3-1.fna.fbcdn.net/v/t51.2885-19/491446472_18352940323146854_4087542511557636712_n.jpg?efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&_nc_ht=instagram.fpso3-1.fna.fbcdn.net&_nc_cat=102&_nc_oc=Q6cZ2QExYckiAqez0_MDjRILBq4b4-z2GL0X3epoxWbaSOS9MRG66Tt7ed0JRwOsJs9i_sU&_nc_ohc=kvg_0UxaKBYQ7kNvwG0ENzI&_nc_gid=d8gg-jEv81vt4M5sLyHN3g&edm=ALGbJPMBAAAA&ccb=7-5&oh=00_AfhKd_cifTXa1ctaniJL_kK3SoHrrzhGDm5wOQ9MuXw2tg&oe=6917208E&_nc_sid=7d3ac5"
+      image: "/jack.png"
     },
     {
       name: "Juan Mora",
