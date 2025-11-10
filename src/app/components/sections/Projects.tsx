@@ -26,14 +26,13 @@ const Projects: React.FC = () => {
 
     <section id="projects" className="py-20 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100 border-b-4 border-black dark:border-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl font-extrabold text-center mb-12 border-b-2  pb-2">
+        <h2 className="text-3xl font-extrabold text-center mb-12  pb-2">
           {t.projectsTitle} 
         </h2>
         
 
         <figure className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {projectList.map((project, index) => (
-            // Comentario: Usa <article> para cada tarjeta de proyecto
             <article key={index} className="bg-white dark:bg-gray-700 shadow-xl rounded-lg overflow-hidden transition-transform duration-300 hover:scale-[1.02]">
               
               {/* Comentario: Espacio para la imagen  */}
