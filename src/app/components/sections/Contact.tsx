@@ -10,7 +10,7 @@ const Contact: React.FC = () => {
   return (
     <section id="contact" className="py-20 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100 border-b-4 border-black dark:border-white">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl font-extrabold text-center mb-6 border-b-2 border-indigo-500 pb-2">
+        <h2 className="text-3xl font-extrabold text-center mb-6  pb-2">
           {t.contact}
         </h2>
 
