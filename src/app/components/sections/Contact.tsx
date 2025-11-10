@@ -18,9 +18,24 @@ const Contact: React.FC = () => {
           <p className="text-lg mb-4">
             {lang === 'es' ? 'Puedes contactarme en:' : 'You can reach me at:'}
           </p>
-          <a href="mailto:juanmayabusiness@gmail.com" className="text-indigo-500 hover:text-indigo-400 font-medium text-xl break-words">
-            juanmayabusiness@gmail.com
-          </a>
+          <div className="space-y-4">
+            <a href="mailto:juanmayabusiness@gmail.com" className="block text-indigo-500 hover:text-indigo-400 font-medium text-xl break-words">
+              juanmayabusiness@gmail.com
+            </a>
+            <div className="border-t border-gray-200 dark:border-gray-700 pt-4">
+              <p className="text-lg mb-2">
+                {lang === 'es' ? 'También por LinkedIn:' : 'Also on LinkedIn:'}
+              </p>
+              <a 
+                href="https://www.linkedin.com/in/juan-david-maya-906530381/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-indigo-500 hover:text-indigo-400 font-medium text-xl break-words"
+              >
+                LinkedIn Profile
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
