@@ -127,7 +127,7 @@ const translations: Record<'es' | 'en', Translations> = {
       "Además, me destaco por habilidades blandas que considero esenciales: la empatía para entender las necesidades del equipo y del usuario, la proactividad para anticipar problemas y proponer soluciones, y la resiliencia para adaptarme a los cambios sin perder el enfoque.",
     whyMeText5:
       "Soy alguien que suma tanto en lo técnico como en lo humano, y que busca siempre aportar valor desde ambos frentes.",
-    contact: "Contacto",
+    contact: "CONTACTO",
     email: "Correo electronico",
   },
 };
