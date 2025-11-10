@@ -11,7 +11,7 @@ function Carousel() {
   const images: string[] = [
     '/carrusel_1.png',
     '/carrusel_2.jpg',
-    // '/carrusel_3.png',
+    '/carrusel_3.jpg',
   ];
 
   const [index, setIndex] = useState(0);
