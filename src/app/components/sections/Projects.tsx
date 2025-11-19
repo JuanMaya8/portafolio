@@ -13,7 +13,7 @@ interface Project {
 const projectList: Project[] = [
   { name: "Project 1", image: "/proyecto_1.png", link: "https://maps-nine-pearl.vercel.app/" },
   { name: "Project 2", image: "/proyecto_2.png", link: "https://responsive-taller-five.vercel.app/" },
-  { name: "Project 3", image: "/proyecto_3.png", link: "https://shoppasto-microservices.vercel.app/" },
+  { name: "Project 3", image: "/proyecto_3.jpg", link: "https://shoppasto-microservices.vercel.app/" },
   { name: "Project 4", image: "/proyecto_4.png", link: "https://boleto-disenooo.vercel.app/" },
   { name: "Project 5", image: "/proyecto_5.png", link: "https://diseno-taller7-brfm.vercel.app/" },
 ];
@@ -30,7 +30,6 @@ const Projects: React.FC = () => {
     });
 
     observer.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
-    
     // Inicial
     setIsDark(document.documentElement.classList.contains("dark"));
 
@@ -58,44 +57,78 @@ const Projects: React.FC = () => {
         </h2>
 
         {/* Avatares laterales */}
-        <img src="/mano_derecha.png" alt="Left avatar" className="hidden md:block absolute left-0 bottom-8 md:bottom-24 w-100 pointer-events-none" style={{ zIndex: 0 }} />
-        <img src="/mano_izquierda.png" alt="Right avatar" className="hidden md:block absolute right-0 bottom-8 md:bottom-24 w-100 pointer-events-none" style={{ zIndex: 0 }} />
+        <img
+          src="/mano_derecha.png"
+          alt="Left avatar"
+          className="hidden md:block absolute left-0 bottom-8 md:bottom-24 w-100 pointer-events-none"
+          style={{ zIndex: 0 }}
+        />
+        <img
+          src="/mano_izquierda.png"
+          alt="Right avatar"
+          className="hidden md:block absolute right-0 bottom-8 md:bottom-24 w-100 pointer-events-none"
+          style={{ zIndex: 0 }}
+        />
 
         {/* Televisor con imagen */}
-        <div className="relative flex items-center justify-center w-full max-w-lg mx-auto" style={{ height: "320px", maxWidth: "420px" }}>
+        <div
+          className="relative flex items-center justify-center w-full max-w-lg mx-auto"
+          style={{ height: "320px", maxWidth: "420px" }}
+        >
           <button
             aria-label="Previous project"
             onClick={prev}
             className="absolute left-[-60px] top-1/2 transform -translate-y-1/2 flex items-center justify-center z-30"
           >
-            <span className={`rounded-full p-2 shadow-lg text-3xl md:text-4xl transition ${isDark ? "bg-gray-600 hover:bg-gray-500" : "bg-gray-300 hover:bg-gray-400"}`}>
+            <span
+              className={`rounded-full p-2 shadow-lg text-3xl md:text-4xl transition ${
+                isDark ? "bg-gray-600 hover:bg-gray-500" : "bg-gray-300 hover:bg-gray-400"
+              }`}
+            >
               ←
             </span>
           </button>
 
-          <div className="absolute left-1/2 top-[0%] w-[74%] h-[77%] transform -translate-x-1/2 z-10 flex items-center justify-center overflow-hidden" style={{ pointerEvents: "none", borderRadius: "4px" }}>
-            <img src={projectList[current].image} alt={projectList[current].name} className="w-full h-full object-cover" style={{ borderRadius: "4px", objectFit: "cover" }} />
+          <div
+            className="absolute left-1/2 top-[0%] w-[74%] h-[77%] transform -translate-x-1/2 z-10 flex items-center justify-center overflow-hidden"
+            style={{ pointerEvents: "none", borderRadius: "4px" }}
+          >
+            <img
+              src={projectList[current].image}
+              alt={projectList[current].name}
+              className="w-full h-full object-cover"
+              style={{ borderRadius: "4px", objectFit: "cover" }}
+            />
           </div>
 
-          <img src="/televisor.png" alt="TV Frame" className="w-full object-contain relative z-20 pointer-events-none" style={{ maxWidth: "420px" }} />
+          <img
+            src="/televisor.png"
+            alt="TV Frame"
+            className="w-full object-contain relative z-20 pointer-events-none"
+            style={{ maxWidth: "420px" }}
+          />
 
           <button
             aria-label="Next project"
             onClick={next}
             className="absolute right-[-60px] top-1/2 transform -translate-y-1/2 flex items-center justify-center z-30"
           >
-            <span className={`rounded-full p-2 shadow-lg text-3xl md:text-4xl transition ${isDark ? "bg-gray-600 hover:bg-gray-500" : "bg-gray-300 hover:bg-gray-400"}`}>
+            <span
+              className={`rounded-full p-2 shadow-lg text-3xl md:text-4xl transition ${
+                isDark ? "bg-gray-600 hover:bg-gray-500" : "bg-gray-300 hover:bg-gray-400"
+              }`}
+            >
               →
             </span>
           </button>
         </div>
 
-        {/* Botón */}
+        {/* Botón debajo del televisor: solo visible en escritorio */}
         <a
           href={projectList[current].link}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-4 mb-6 w-36 text-center font-bold py-2 px-4 rounded-full transition-colors"
+          className="mt-4 mb-6 w-36 text-center font-bold py-2 px-4 rounded-full transition-colors hidden md:inline-block"
           style={{ background: accentColor, color: "#fff" }}
         >
           {t.clickMe}
@@ -104,14 +137,25 @@ const Projects: React.FC = () => {
         {/* Tecnologías */}
         <div className="grid grid-cols-5 md:grid-cols-8 gap-2 items-center justify-items-center w-full max-w-xl mx-auto mt-2 md:mt-4 mb-4">
           {Array.from({ length: 15 }).map((_, i) => (
-            <img key={i} src={`/tecnologia_${i + 1}.svg`} alt={`Technology ${i + 1}`} className="w-8 h-8 md:w-10 md:h-10 object-contain" />
+            <img
+              key={i}
+              src={`/tecnologia_${i + 1}.svg`}
+              alt={`Technology ${i + 1}`}
+              className="w-8 h-8 md:w-10 md:h-10 object-contain"
+            />
           ))}
         </div>
 
-        {/* Avatares móviles */}
+        {/* Botón debajo de las tecnologías: solo visible en móvil */}
         <div className="md:hidden flex items-center w-full mt-2 relative z-10 justify-between">
           <img src="/mano_derecha.png" alt="Left avatar mobile" className="w-32" />
-          <a href={projectList[current].link} target="_blank" rel="noopener noreferrer" className="mx-auto w-36 text-center font-bold py-2 px-4 rounded-full transition-colors" style={{ background: accentColor, color: "#fff" }}>
+          <a
+            href={projectList[current].link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mx-auto w-36 text-center font-bold py-2 px-4 rounded-full transition-colors block md:hidden"
+            style={{ background: accentColor, color: "#fff" }}
+          >
             {t.clickMe}
           </a>
           <img src="/mano_izquierda.png" alt="Right avatar mobile" className="w-32" />
