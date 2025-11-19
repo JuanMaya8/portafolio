@@ -1,5 +1,3 @@
-// components/sections/Projects.tsx
-
 "use client";
 import React, { useState } from "react";
 import { useLanguage } from "../context/LanguageContext";
@@ -62,51 +60,56 @@ const Projects: React.FC = () => {
         <h2 className="text-3xl font-extrabold text-center mb-8 pb-2 text-gray-900 dark:text-gray-100">
           {t.projectsTitle}
         </h2>
-        {/* Avatares laterales */}
+        {/* Avatares laterales en desktop */}
         <img
-          src="/mano_izquierda.svg"
+          src="/mano_derecha.png"
           alt="Left avatar"
-          className="hidden md:block absolute left-0 bottom-8 md:bottom-24 w-32 opacity-80 pointer-events-none"
+          className="hidden md:block absolute left-0 bottom-8 md:bottom-24 w-100 opacity-80 pointer-events-none"
           style={{ zIndex: 0 }}
         />
         <img
-          src="/mano_derecha.svg"
+          src="/mano_izquierda.png"
           alt="Right avatar"
-          className="hidden md:block absolute right-0 bottom-8 md:bottom-24 w-32 opacity-80 pointer-events-none"
+          className="hidden md:block absolute right-0 bottom-8 md:bottom-24 w-100 opacity-80 pointer-events-none"
           style={{ zIndex: 0 }}
         />
 
-        {/* Televisor marco con previsualización de proyecto*/}
-        <div className="relative flex items-center justify-center w-full max-w-lg mx-auto">
+        {/* Televisor marco con imagen de proyecto ajustada detrás */}
+        <div className="relative flex items-center justify-center w-full max-w-lg mx-auto" style={{height: "380px"}}>
           {/* Flecha izquierda */}
           <button
             aria-label="Previous project"
             onClick={prev}
-            className="absolute left-[-60px] top-1/2 transform -translate-y-1/2 bg-transparent flex items-center justify-center"
+            className="absolute left-[-60px] top-1/2 transform -translate-y-1/2 bg-transparent flex items-center justify-center z-30"
           >
             <span className="bg-gray-300 dark:bg-gray-700 rounded-full p-2 shadow-lg text-3xl md:text-4xl hover:bg-gray-400 dark:hover:bg-gray-600 transition">
               ←
             </span>
           </button>
-          {/* Televisor marco */}
+          {/* Imagen de previsualización ABSOLUTA detrás del televisor */}
+          <div
+            className="absolute left-1/2 top-[16.5%] w-[69%] h-[66%] transform -translate-x-1/2 z-10 flex items-center justify-center overflow-hidden"
+            style={{ pointerEvents: "none", borderRadius: "8px", background: "transparent" }}
+          >
+            <img
+              src={projectList[current].image}
+              alt={projectList[current].name}
+              className="w-full h-full object-cover"
+              style={{ borderRadius: "8px" }}
+            />
+          </div>
+          {/* Televisor marco ENCIMA de la imagen */}
           <img
             src="/televisor.png"
             alt="TV Frame"
-            className="w-full object-contain relative z-10 pointer-events-none"
+            className="w-full object-contain relative z-20 pointer-events-none"
             style={{ maxWidth: "500px" }}
-          />
-          {/* Imagen del proyecto superpuesta */}
-          <img
-            src={projectList[current].image}
-            alt={projectList[current].name}
-            className="absolute left-1/2 top-[19%] w-[70%] h-[60%] object-contain transform -translate-x-1/2 z-20"
-            style={{ pointerEvents: "none" }}
           />
           {/* Flecha derecha */}
           <button
             aria-label="Next project"
             onClick={next}
-            className="absolute right-[-60px] top-1/2 transform -translate-y-1/2 bg-transparent flex items-center justify-center"
+            className="absolute right-[-60px] top-1/2 transform -translate-y-1/2 bg-transparent flex items-center justify-center z-30"
           >
             <span className="bg-gray-300 dark:bg-gray-700 rounded-full p-2 shadow-lg text-3xl md:text-4xl hover:bg-gray-400 dark:hover:bg-gray-600 transition">
               →
@@ -139,12 +142,12 @@ const Projects: React.FC = () => {
         {/* Avatares móviles con menor opacidad y detrás del texto */}
         <div className="md:hidden flex justify-between items-center w-full mt-2 relative z-0">
           <img
-            src="/mano_izquierda.svg"
+            src="/mano_izquierda.png"
             alt="Left avatar mobile"
             className="w-20 opacity-70 mr-4"
           />
           <img
-            src="/mano_derecha.svg"
+            src="/mano_derecha.png"
             alt="Right avatar mobile"
             className="w-20 opacity-70 ml-4"
           />
