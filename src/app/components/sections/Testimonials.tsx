@@ -46,23 +46,22 @@ const Testimonials: React.FC = () => {
     },
   ];
 
-  const getTranslatedQuote = (name: string, lang: "es" | "en") => {
-    if (lang === "es") {
-      if (name === "Jack Limas")
-        return "Trabajo honesto, comprometido y con visión de futuro. Un activo en cualquier equipo.";
-      if (name === "Juan Mora")
-        return "Siempre sabe escuchar, colaborar y tiene una comunicación que genera confianza en el silencio.";
-      if (name === "David Ramirez")
-        return "La velocidad y la compresión del problema demuestran su profesionalismo. Siempre cumple el propósito.";
-    }
-    const testimonial = testimonialList.find((t) => t.name === name);
-    return testimonial ? testimonial.quote : "";
-  };
+  const getTranslatedQuote = (name: string, lang: "es" | "en") => {
+    if (lang === "es") {
+      if (name === "Jack Limas")
+        return "Trabajo honesto, comprometido y con visión de futuro. Un activo en cualquier equipo.";
+      if (name === "Juan Mora")
+        return "Siempre sabe escuchar, colaborar y tiene una comunicación que genera confianza en el silencio.";
+      if (name === "David Ramirez")
+        return "[translate:La velocidad y la compresión del problema demuestran su profesionalismo. Siempre cumple el propósito.";
+    }
+    const testimonial = testimonialList.find((t) => t.name === name);
+    return testimonial ? testimonial.quote : "";
+  };
 
   const next = () => setCurrent((prev) => (prev + 1) % testimonialList.length);
   const prev = () => setCurrent((prev) => (prev - 1 + testimonialList.length) % testimonialList.length);
 
-  // Colores personalizados para modo claro
   const backgroundLight = "#f0f4ff"; // azul pastel claro
   const borderLight = "#a3bffa"; // azul suave para borde
   const textLight = "#1e293b"; // azul oscuro para texto
@@ -96,7 +95,7 @@ const Testimonials: React.FC = () => {
               exit={{ opacity: 0, x: -50 }}
               transition={{ duration: 0.3 }}
               style={{
-                background: isDark ? "var(--gray-700)" : "var(--gray-200)",
+                background: isDark ? "var(--gray-700)" : backgroundLight,
                 borderTop: isDark ? "4px solid var(--indigo-500)" : `4px solid ${borderLight}`,
               }}
               className="p-6 rounded-lg shadow-md"
@@ -162,7 +161,7 @@ const Testimonials: React.FC = () => {
             <article
               key={index}
               style={{
-                background: isDark ? "var(--gray-700)" : "var(--gray-200)",
+                background: isDark ? "var(--gray-700)" : backgroundLight,
                 borderTop: isDark ? "4px solid var(--indigo-500)" : `4px solid ${borderLight}`,
               }}
               className="p-6 rounded-lg shadow-md"

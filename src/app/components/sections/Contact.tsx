@@ -1,6 +1,6 @@
 "use client";
-import React, { useState, useEffect } from 'react';
-import { useLanguage } from '../context/LanguageContext';
+import React, { useState, useEffect } from "react";
+import { useLanguage } from "../context/LanguageContext";
 
 const Contact: React.FC = () => {
   const { t, lang } = useLanguage();
@@ -8,14 +8,13 @@ const Contact: React.FC = () => {
 
   useEffect(() => {
     const observer = new MutationObserver(() => {
-      setIsDark(document.documentElement.classList.contains('dark'));
+      setIsDark(document.documentElement.classList.contains("dark"));
     });
-    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
-    setIsDark(document.documentElement.classList.contains('dark'));
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
+    setIsDark(document.documentElement.classList.contains("dark"));
     return () => observer.disconnect();
   }, []);
 
-  // Colores para modo claro personalizados
   const backgroundLight = "#f9fafb"; // muy claro, casi blanco
   const boxShadowLight = "0 10px 25px #d1d5db"; // sombra gris suave
   const textLight = "#1f2937"; // texto gris oscuro
@@ -41,14 +40,14 @@ const Contact: React.FC = () => {
 
         <div
           style={{
-            background: isDark ? "var(--gray-800)" : "var(--gray-100)",
+            background: isDark ? "var(--gray-800)" : backgroundLight,
             color: isDark ? "var(--foreground)" : textLight,
             boxShadow: isDark ? "0 10px 25px var(--gray-400)" : boxShadowLight,
           }}
           className="p-8 rounded-xl text-center"
         >
           <p style={{ color: isDark ? "var(--foreground)" : textLight }} className="text-lg mb-4">
-            {lang === 'es' ? 'Puedes contactarme en:' : 'You can reach me at:'}
+            {lang === "es" ? "Puedes contactarme en:" : "You can reach me at:"}
           </p>
           <div className="space-y-4">
             <a
@@ -60,7 +59,7 @@ const Contact: React.FC = () => {
             </a>
             <div style={{ borderTop: isDark ? "1px solid var(--gray-400)" : "1px solid #d1d5db" }} className="pt-4">
               <p style={{ color: isDark ? "var(--foreground)" : textLight }} className="text-lg mb-2">
-                {lang === 'es' ? 'También por LinkedIn:' : 'Also on LinkedIn:'}
+                {lang === "es" ? "También por LinkedIn:" : "Also on LinkedIn:"}
               </p>
               <a
                 href="https://www.linkedin.com/in/juan-david-maya-906530381/"
