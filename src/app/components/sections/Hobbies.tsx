@@ -1,5 +1,3 @@
-// components/sections/Hobbies.tsx
-
 "use client";
 import React, { useState, useRef } from 'react';
 import Image from 'next/image';
@@ -61,7 +59,7 @@ function Carousel() {
   };
 
   return (
-    <div className="relative w-full max-w-3xl">
+    <div style={{ maxWidth: '600px', width: '100%' }} className="relative">
       <div
         className="w-full overflow-hidden rounded-lg"
         onTouchStart={onTouchStart}
@@ -78,7 +76,13 @@ function Carousel() {
             exit="exit"
             transition={{ duration: 0.4 }}
           >
-            <Image src={images[index]} alt={`Carrusel imagen ${index + 1}`} width={600} height={300} className="w-full h-auto object-cover" />
+            <Image
+              src={images[index]}
+              alt={`Carrusel imagen ${index + 1}`}
+              width={600}
+              height={300}
+              className="w-full h-auto object-cover rounded-lg shadow-lg"
+            />
           </motion.div>
         </AnimatePresence>
       </div>
@@ -86,7 +90,12 @@ function Carousel() {
       <button
         onClick={prev}
         aria-label="Anterior"
-        className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/90 dark:bg-gray-800/80 text-gray-800 dark:text-gray-100 rounded-full p-3 shadow-lg hover:scale-105 transition-transform"
+        style={{
+          background: 'var(--gray-100)',
+          color: 'var(--foreground)',
+          boxShadow: '0 4px 12px var(--gray-400)',
+        }}
+        className="absolute left-2 top-1/2 -translate-y-1/2 rounded-full p-3 hover:scale-105 transition-transform"
       >
         ‹
       </button>
@@ -94,7 +103,12 @@ function Carousel() {
       <button
         onClick={next}
         aria-label="Siguiente"
-        className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/90 dark:bg-gray-800/80 text-gray-800 dark:text-gray-100 rounded-full p-3 shadow-lg hover:scale-105 transition-transform"
+        style={{
+          background: 'var(--gray-100)',
+          color: 'var(--foreground)',
+          boxShadow: '0 4px 12px var(--gray-400)',
+        }}
+        className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full p-3 hover:scale-105 transition-transform"
       >
         ›
       </button>
@@ -105,7 +119,10 @@ function Carousel() {
             key={i}
             onClick={() => { setDirection(i > index ? 1 : -1); setIndex(i); }}
             aria-label={`Ir a la imagen ${i + 1}`}
-            className={`w-2 h-2 rounded-full ${i === index ? 'bg-indigo-600' : 'bg-gray-300 dark:bg-gray-600'}`}
+            style={{
+              backgroundColor: i === index ? 'var(--indigo-500)' : 'var(--gray-400)',
+            }}
+            className="w-2 h-2 rounded-full"
           />
         ))}
       </div>
@@ -117,25 +134,31 @@ const Hobbies: React.FC = () => {
   const { t } = useLanguage();
 
   return (
-    <section id="off-work" className="py-20 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100 border-b-4 border-black dark:border-white">
+    <section
+      id="off-work"
+      style={{
+        background: 'var(--background)',
+        color: 'var(--foreground)',
+        borderBottom: '4px solid var(--gray-500)',
+      }}
+      className="py-20"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <hgroup className="text-center mb-12">
-          <h2 className="text-3xl font-extrabold pb-2 inline-block">
+          <h2 style={{ color: 'var(--foreground)' }} className="text-3xl font-extrabold pb-2 inline-block">
             {t.hobbiesTitle}
           </h2>
         </hgroup>
 
-        {/* Carrusel después del título */}
         <div className="w-full flex flex-col items-center mb-12">
           <Carousel />
         </div>
 
-        {/* Texto debajo del carrusel */}
         <article className="space-y-6 text-lg leading-relaxed text-center max-w-3xl mx-auto">
           <p>{t.hobbiesSubtitle}</p>
           <p>{t.hobbiesText1}</p>
           <p>{t.hobbiesText2}</p>
-          <p className="font-semibold dark:text-indigo-400">{t.hobbiesText3}</p>
+          <p style={{ color: 'var(--indigo-500)' }} className="font-semibold">{t.hobbiesText3}</p>
         </article>
       </div>
     </section>
