@@ -1,62 +1,154 @@
 // components/sections/Projects.tsx
 
 "use client";
-import React from 'react';
-import { useLanguage } from '../context/LanguageContext';
+import React, { useState } from "react";
+import { useLanguage } from "../context/LanguageContext";
 
-//Interfaz para los datos de un proyecto
+// Interfaz para los proyectos
 interface Project {
   name: string;
-  description: string;
+  image: string;
+  link: string;
 }
+
+// Lista de proyectos (previsualizaciones y links)
+const projectList: Project[] = [
+  {
+    name: "Project 1",
+    image: "/proyecto_1.png",
+    link: "https://maps-nine-pearl.vercel.app/",
+  },
+  {
+    name: "Project 2",
+    image: "/proyecto_2.png",
+    link: "https://responsive-taller-five.vercel.app/",
+  },
+  {
+    name: "Project 3",
+    image: "/proyecto_3.png",
+    link: "https://shoppasto-microservices.vercel.app/",
+  },
+  {
+    name: "Project 4",
+    image: "/proyecto_4.png",
+    link: "https://boleto-disenooo.vercel.app/",
+  },
+  {
+    name: "Project 5",
+    image: "/proyecto_5.png",
+    link: "https://diseno-taller7-brfm.vercel.app/",
+  },
+];
 
 const Projects: React.FC = () => {
   const { t } = useLanguage();
+  const [current, setCurrent] = useState(0);
 
-  // Datos de proyectos
-  const projectList: Project[] = [
-    { name: "BOM [cite: 11]", description: "Project BOM description placeholder." },
-    { name: "AMS [cite: 12]", description: "Project AMS description placeholder." },
-    { name: "3 dj [cite: 13]", description: "Project 3 dj description placeholder." },
-    { name: "52 [cite: 14]", description: "Project 52 description placeholder." },
-    { name: "N [cite: 15]", description: "Project N description placeholder." },
-  ];
+  // Avanzar al siguiente proyecto
+  const next = () =>
+    setCurrent((prev) => (prev + 1) % projectList.length);
+
+  // Volver al anterior
+  const prev = () =>
+    setCurrent((prev) => (prev - 1 + projectList.length) % projectList.length);
 
   return (
-
-    <section id="projects" className="py-20 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100 border-b-4 border-black dark:border-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl font-extrabold text-center mb-12  pb-2">
-          {t.projectsTitle} 
+    <section
+      id="projects"
+      className="py-20 bg-pink-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 relative overflow-x-hidden border-b-4 border-black dark:border-white"
+    >
+      <div className="max-w-2xl mx-auto px-2 lg:px-0 flex flex-col items-center">
+        {/* Título */}
+        <h2 className="text-3xl font-extrabold text-center mb-8 pb-2 text-gray-900 dark:text-gray-100">
+          {t.projectsTitle}
         </h2>
-        
+        {/* Avatares laterales */}
+        <img
+          src="/mano_izquierda.svg"
+          alt="Left avatar"
+          className="hidden md:block absolute left-0 bottom-8 md:bottom-24 w-32 opacity-80 pointer-events-none"
+          style={{ zIndex: 0 }}
+        />
+        <img
+          src="/mano_derecha.svg"
+          alt="Right avatar"
+          className="hidden md:block absolute right-0 bottom-8 md:bottom-24 w-32 opacity-80 pointer-events-none"
+          style={{ zIndex: 0 }}
+        />
 
-        <figure className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projectList.map((project, index) => (
-            <article key={index} className="bg-white dark:bg-gray-700 shadow-xl rounded-lg overflow-hidden transition-transform duration-300 hover:scale-[1.02]">
-              
-              {/* Comentario: Espacio para la imagen  */}
-              <span
-                aria-label={`Placeholder for project image ${project.name}`}
-                className="h-48 bg-gray-300 dark:bg-gray-600 flex items-center justify-center text-5xl text-gray-500 dark:text-gray-400 border-b-2 border-dashed border-gray-400 dark:border-gray-500"
-              >
-                ⚙️
-              </span>
+        {/* Televisor marco con previsualización de proyecto*/}
+        <div className="relative flex items-center justify-center w-full max-w-lg mx-auto">
+          {/* Flecha izquierda */}
+          <button
+            aria-label="Previous project"
+            onClick={prev}
+            className="absolute left-[-60px] top-1/2 transform -translate-y-1/2 bg-transparent flex items-center justify-center"
+          >
+            <span className="bg-gray-300 dark:bg-gray-700 rounded-full p-2 shadow-lg text-3xl md:text-4xl hover:bg-gray-400 dark:hover:bg-gray-600 transition">
+              ←
+            </span>
+          </button>
+          {/* Televisor marco */}
+          <img
+            src="/televisor.png"
+            alt="TV Frame"
+            className="w-full object-contain relative z-10 pointer-events-none"
+            style={{ maxWidth: "500px" }}
+          />
+          {/* Imagen del proyecto superpuesta */}
+          <img
+            src={projectList[current].image}
+            alt={projectList[current].name}
+            className="absolute left-1/2 top-[19%] w-[70%] h-[60%] object-contain transform -translate-x-1/2 z-20"
+            style={{ pointerEvents: "none" }}
+          />
+          {/* Flecha derecha */}
+          <button
+            aria-label="Next project"
+            onClick={next}
+            className="absolute right-[-60px] top-1/2 transform -translate-y-1/2 bg-transparent flex items-center justify-center"
+          >
+            <span className="bg-gray-300 dark:bg-gray-700 rounded-full p-2 shadow-lg text-3xl md:text-4xl hover:bg-gray-400 dark:hover:bg-gray-600 transition">
+              →
+            </span>
+          </button>
+        </div>
 
-              <figcaption className="p-6">
-                <h3 className="text-xl font-bold mb-2  dark:text-indigo-400">
-                  {project.name}
-                </h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">
-                  {project.description}
-                </p>
-                <button className="bg-black hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors">
-                  {t.clickMe}
-                </button>
-              </figcaption>
-            </article>
+        {/* Botón principal para ir al link */}
+        <a
+          href={projectList[current].link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="bg-black mt-4 mb-6 w-36 text-center hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition-colors"
+        >
+          {t.clickMe}
+        </a>
+
+        {/* Tecnologías SVG, adaptativo en grid */}
+        <div className="grid grid-cols-5 md:grid-cols-8 gap-2 items-center justify-items-center w-full max-w-xl mx-auto mt-2 md:mt-4 mb-4">
+          {Array.from({ length: 15 }).map((_, i) => (
+            <img
+              key={i}
+              src={`/tecnologia_${i + 1}.svg`}
+              alt={`Technology ${i + 1}`}
+              className="w-8 h-8 md:w-10 md:h-10 object-contain"
+            />
           ))}
-        </figure>
+        </div>
+
+        {/* Avatares móviles con menor opacidad y detrás del texto */}
+        <div className="md:hidden flex justify-between items-center w-full mt-2 relative z-0">
+          <img
+            src="/mano_izquierda.svg"
+            alt="Left avatar mobile"
+            className="w-20 opacity-70 mr-4"
+          />
+          <img
+            src="/mano_derecha.svg"
+            alt="Right avatar mobile"
+            className="w-20 opacity-70 ml-4"
+          />
+        </div>
       </div>
     </section>
   );
