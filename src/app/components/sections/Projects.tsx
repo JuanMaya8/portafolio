@@ -23,14 +23,11 @@ const Projects: React.FC = () => {
   const [current, setCurrent] = useState(0);
   const [isDark, setIsDark] = useState(false);
 
-  // Detectar cambios de clase dark en html
   useEffect(() => {
     const observer = new MutationObserver(() => {
       setIsDark(document.documentElement.classList.contains("dark"));
     });
-
     observer.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
-    // Inicial
     setIsDark(document.documentElement.classList.contains("dark"));
 
     return () => observer.disconnect();
@@ -39,7 +36,6 @@ const Projects: React.FC = () => {
   const next = () => setCurrent((prev) => (prev + 1) % projectList.length);
   const prev = () => setCurrent((prev) => (prev - 1 + projectList.length) % projectList.length);
 
-  // Colores dinámicos
   const backgroundColor = isDark ? "#18181b" : "#f8d1e0";
   const textColor = isDark ? "#f4f4f5" : "#3a2d36";
   const accentColor = isDark ? "#6366f1" : "#1a1a1a";
@@ -73,15 +69,15 @@ const Projects: React.FC = () => {
         {/* Televisor con imagen */}
         <div
           className="relative flex items-center justify-center w-full max-w-lg mx-auto md:max-w-lg"
-          style={{ height: "240px" }} // Reducido en móvil
+          style={{ height: "320px" }} // Altura estándar escritorio
         >
           <button
             aria-label="Previous project"
             onClick={prev}
-            className="absolute left-2 top-1/2 transform -translate-y-1/2 flex items-center justify-center z-30"
+            className="absolute left-[-50px] top-1/2 transform -translate-y-1/2 flex items-center justify-center z-30"
           >
             <span
-              className={`rounded-full p-1 md:p-2 shadow-lg text-2xl md:text-3xl transition ${
+              className={`rounded-full p-2 shadow-lg text-3xl md:text-4xl transition ${
                 isDark ? "bg-gray-600 hover:bg-gray-500" : "bg-gray-300 hover:bg-gray-400"
               }`}
             >
@@ -89,32 +85,34 @@ const Projects: React.FC = () => {
             </span>
           </button>
 
+          {/* Contenedor de la imagen del proyecto */}
           <div
-            className="absolute left-1/2 top-[0%] w-[74%] h-[77%] transform -translate-x-1/2 z-10 flex items-center justify-center overflow-hidden"
-            style={{ pointerEvents: "none", borderRadius: "4px" }}
+            className="absolute left-1/2 top-[8%] w-[68%] h-[72%] transform -translate-x-1/2 z-10 flex items-center justify-center overflow-hidden rounded-lg"
+            style={{ pointerEvents: "none", borderRadius: "8px" }}
           >
             <img
               src={projectList[current].image}
               alt={projectList[current].name}
-              className="w-full h-full object-cover"
-              style={{ borderRadius: "4px", objectFit: "cover" }}
+              className="w-full h-full object-contain"
+              style={{ borderRadius: "8px" }}
             />
           </div>
 
+          {/* Marco televisor */}
           <img
             src="/televisor.png"
             alt="TV Frame"
             className="w-full object-contain relative z-20 pointer-events-none"
-            style={{ maxWidth: "320px" }} // Reducido ancho en móvil
+            style={{ maxWidth: "420px" }}
           />
 
           <button
             aria-label="Next project"
             onClick={next}
-            className="absolute right-2 top-1/2 transform -translate-y-1/2 flex items-center justify-center z-30"
+            className="absolute right-[-50px] top-1/2 transform -translate-y-1/2 flex items-center justify-center z-30"
           >
             <span
-              className={`rounded-full p-1 md:p-2 shadow-lg text-2xl md:text-3xl transition ${
+              className={`rounded-full p-2 shadow-lg text-3xl md:text-4xl transition ${
                 isDark ? "bg-gray-600 hover:bg-gray-500" : "bg-gray-300 hover:bg-gray-400"
               }`}
             >
