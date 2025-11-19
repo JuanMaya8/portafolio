@@ -8,27 +8,35 @@ const WhyMe: React.FC = () => {
   const { t } = useLanguage();
 
   return (
-    <section id="risk-it" className="py-20 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 border-b-4 border-black dark:border-white">
+    <section
+      id="risk-it"
+      style={{
+        background: 'var(--background)',
+        color: 'var(--foreground)',
+        borderBottom: '4px solid var(--gray-500)',
+      }}
+      className="py-20"
+    >
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <h2 className="text-3xl font-extrabold text-center mb-12 pb-2">
+        <h2
+          style={{ color: 'var(--foreground)' }}
+          className="text-3xl font-extrabold text-center mb-12 pb-2"
+        >
           {t.whyMeTitle}
         </h2>
         
         <div className="flex flex-col lg:flex-row gap-8 items-start">
           
-          <article className="space-y-6 text-lg leading-relaxed flex-1">
-            
+          <article
+            className="space-y-6 text-lg leading-relaxed flex-1"
+            style={{ color: 'var(--foreground-dark)' }}
+          >
             <p>{t.whyMeText1}</p>
-
             <p>{t.whyMeText2}</p>
-
             <p>{t.whyMeText3}</p>
-
             <p>{t.whyMeText4}</p>
-
             <p>{t.whyMeText5}</p>
-
           </article>
 
           <div className="lg:w-1/3 flex-shrink-0">

@@ -44,7 +44,7 @@ const Hero: React.FC = () => {
               </h1>
 
               {/* Mantengo color particular del subtítulo (azulado suave) */}
-              <p className="text-xl sm:text-2xl text-indigo-500">
+              <p className="text-xl sm:text-2xl ">
                 {t.heroSubtitle}
               </p>
             </hgroup>
