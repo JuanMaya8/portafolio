@@ -1,5 +1,3 @@
-// components/sections/Testimonials.tsx
-
 "use client";
 import React, { useState } from "react";
 import { useLanguage } from "../context/LanguageContext";
@@ -20,22 +18,19 @@ const Testimonials: React.FC = () => {
   const testimonialList: Testimonial[] = [
     {
       name: "Jack Limas",
-      quote:
-        "Honest, committed work with a future vision. An asset to any team.",
+      quote: "Honest, committed work with a future vision. An asset to any team.",
       source: "",
       image: "/jack.png",
     },
     {
       name: "Juan Mora",
-      quote:
-        "Always knows how to listen, collaborate, and has communication that generates trust in silence.",
+      quote: "Always knows how to listen, collaborate, and has communication that generates trust in silence.",
       source: "",
       image: "/mora.png",
     },
     {
       name: "David Ramirez",
-      quote:
-        "Speed and problem comprehension demonstrate his professionalism. Always fulfills the purpose.",
+      quote: "Speed and problem comprehension demonstrate his professionalism. Always fulfills the purpose.",
       source: "",
       image: "/ramirez.png",
     },
@@ -54,21 +49,21 @@ const Testimonials: React.FC = () => {
     return testimonial ? testimonial.quote : "";
   };
 
-  const next = () => {
-    setCurrent((prev) => (prev + 1) % testimonialList.length);
-  };
-
-  const prev = () => {
-    setCurrent((prev) => (prev - 1 + testimonialList.length) % testimonialList.length);
-  };
+  const next = () => setCurrent((prev) => (prev + 1) % testimonialList.length);
+  const prev = () => setCurrent((prev) => (prev - 1 + testimonialList.length) % testimonialList.length);
 
   return (
     <section
       id="testimonials"
-      className="py-20 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 border-b-4 border-black dark:border-white"
+      style={{
+        background: 'var(--background)',
+        color: 'var(--foreground)',
+        borderBottom: '4px solid var(--gray-500)',
+      }}
+      className="py-20"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl font-extrabold text-center mb-12 pb-2">
+        <h2 style={{ color: 'var(--foreground)' }} className="text-3xl font-extrabold text-center mb-12 pb-2">
           {t.testimonials}
         </h2>
 
@@ -81,13 +76,17 @@ const Testimonials: React.FC = () => {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -50 }}
               transition={{ duration: 0.3 }}
-              className="p-6 bg-gray-50 dark:bg-gray-800 rounded-lg shadow-md border-t-4"
+              style={{
+                background: 'var(--gray-200)',
+                borderTop: '4px solid var(--indigo-500)',
+              }}
+              className="p-6 rounded-lg shadow-md"
             >
-              <blockquote className="italic text-gray-700 dark:text-gray-300 mb-4 h-32">
+              <blockquote style={{ color: 'var(--foreground-dark)' }} className="italic mb-4 h-32">
                 &quot;{getTranslatedQuote(testimonialList[current].name, lang)}&quot;
               </blockquote>
 
-              <figcaption className="pt-4 border-t border-gray-200 dark:border-gray-700 flex items-center">
+              <figcaption className="pt-4 border-t border-gray-400 flex items-center">
                 {testimonialList[current].image && (
                   <div className="relative w-10 h-10 mr-3 flex-shrink-0">
                     <Image
@@ -98,9 +97,8 @@ const Testimonials: React.FC = () => {
                     />
                   </div>
                 )}
-
                 <div>
-                  <cite className="not-italic font-bold text-lg dark:text-indigo-400 block">
+                  <cite style={{ color: 'var(--indigo-500)' }} className="not-italic font-bold text-lg block">
                     {testimonialList[current].name}
                   </cite>
                 </div>
@@ -110,16 +108,10 @@ const Testimonials: React.FC = () => {
 
           {/* Controles */}
           <div className="flex justify-between mt-4">
-            <button
-              onClick={prev}
-              className="px-4 py-2 bg-gray-200 dark:bg-gray-700 rounded-lg"
-            >
+            <button style={{ background: 'var(--gray-300)', color: 'var(--foreground)' }} className="px-4 py-2 rounded-lg" onClick={prev}>
               ←
             </button>
-            <button
-              onClick={next}
-              className="px-4 py-2 bg-gray-200 dark:bg-gray-700 rounded-lg"
-            >
+            <button style={{ background: 'var(--gray-300)', color: 'var(--foreground)' }} className="px-4 py-2 rounded-lg" onClick={next}>
               →
             </button>
           </div>
@@ -130,26 +122,24 @@ const Testimonials: React.FC = () => {
           {testimonialList.map((testimonial, index) => (
             <article
               key={index}
-              className="p-6 bg-gray-50 dark:bg-gray-800 rounded-lg shadow-md border-t-4"
+              style={{
+                background: 'var(--gray-200)',
+                borderTop: '4px solid var(--indigo-500)',
+              }}
+              className="p-6 rounded-lg shadow-md"
             >
-              <blockquote className="italic text-gray-700 dark:text-gray-300 mb-4 h-32">
+              <blockquote style={{ color: 'var(--foreground-dark)' }} className="italic mb-4 h-32">
                 &quot;{getTranslatedQuote(testimonial.name, lang)}&quot;
               </blockquote>
 
-              <figcaption className="pt-4 border-t border-gray-200 dark:border-gray-700 flex items-center">
+              <figcaption className="pt-4 border-t border-gray-400 flex items-center">
                 {testimonial.image && (
                   <div className="relative w-10 h-10 mr-3 flex-shrink-0">
-                    <Image
-                      src={testimonial.image}
-                      alt={testimonial.name}
-                      fill
-                      className="rounded-full object-cover"
-                    />
+                    <Image src={testimonial.image} alt={testimonial.name} fill className="rounded-full object-cover" />
                   </div>
                 )}
-
                 <div>
-                  <cite className="not-italic font-bold text-lg dark:text-indigo-400 block">
+                  <cite style={{ color: 'var(--indigo-500)' }} className="not-italic font-bold text-lg block">
                     {testimonial.name}
                   </cite>
                 </div>
