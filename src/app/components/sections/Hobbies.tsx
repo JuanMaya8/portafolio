@@ -78,7 +78,7 @@ function Carousel() {
             exit="exit"
             transition={{ duration: 0.4 }}
           >
-            <Image src={images[index]} alt={`Carrusel imagen ${index + 1}`} width={900} height={600} className="w-full h-auto object-cover" />
+            <Image src={images[index]} alt={`Carrusel imagen ${index + 1}`} width={600} height={300} className="w-full h-auto object-cover" />
           </motion.div>
         </AnimatePresence>
       </div>
