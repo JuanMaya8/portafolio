@@ -72,16 +72,16 @@ const Projects: React.FC = () => {
 
         {/* Televisor con imagen */}
         <div
-          className="relative flex items-center justify-center w-full max-w-lg mx-auto"
-          style={{ height: "320px", maxWidth: "420px" }}
+          className="relative flex items-center justify-center w-full max-w-lg mx-auto md:max-w-lg"
+          style={{ height: "240px" }} // Reducido en móvil
         >
           <button
             aria-label="Previous project"
             onClick={prev}
-            className="absolute left-[-60px] top-1/2 transform -translate-y-1/2 flex items-center justify-center z-30"
+            className="absolute left-2 top-1/2 transform -translate-y-1/2 flex items-center justify-center z-30"
           >
             <span
-              className={`rounded-full p-2 shadow-lg text-3xl md:text-4xl transition ${
+              className={`rounded-full p-1 md:p-2 shadow-lg text-2xl md:text-3xl transition ${
                 isDark ? "bg-gray-600 hover:bg-gray-500" : "bg-gray-300 hover:bg-gray-400"
               }`}
             >
@@ -105,16 +105,16 @@ const Projects: React.FC = () => {
             src="/televisor.png"
             alt="TV Frame"
             className="w-full object-contain relative z-20 pointer-events-none"
-            style={{ maxWidth: "420px" }}
+            style={{ maxWidth: "320px" }} // Reducido ancho en móvil
           />
 
           <button
             aria-label="Next project"
             onClick={next}
-            className="absolute right-[-60px] top-1/2 transform -translate-y-1/2 flex items-center justify-center z-30"
+            className="absolute right-2 top-1/2 transform -translate-y-1/2 flex items-center justify-center z-30"
           >
             <span
-              className={`rounded-full p-2 shadow-lg text-3xl md:text-4xl transition ${
+              className={`rounded-full p-1 md:p-2 shadow-lg text-2xl md:text-3xl transition ${
                 isDark ? "bg-gray-600 hover:bg-gray-500" : "bg-gray-300 hover:bg-gray-400"
               }`}
             >
