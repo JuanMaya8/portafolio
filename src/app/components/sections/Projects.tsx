@@ -13,7 +13,7 @@ interface Project {
 const projectList: Project[] = [
   { name: "Project 1", image: "/proyecto_1.png", link: "https://maps-nine-pearl.vercel.app/" },
   { name: "Project 2", image: "/proyecto_2.png", link: "https://responsive-taller-five.vercel.app/" },
-  { name: "Project 3", image: "/proyecto_3.jpg", link: "https://shoppasto-microservices.vercel.app/" },
+  { name: "Project 3", image: "/proyecto_3.png", link: "https://shoppasto-microservices.vercel.app/" },
   { name: "Project 4", image: "/proyecto_4.png", link: "https://boleto-disenooo.vercel.app/" },
   { name: "Project 5", image: "/proyecto_5.png", link: "https://diseno-taller7-brfm.vercel.app/" },
 ];
