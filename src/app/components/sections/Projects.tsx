@@ -74,48 +74,49 @@ const Projects: React.FC = () => {
           style={{ zIndex: 0 }}
         />
 
-        {/* Televisor marco con imagen de proyecto ajustada detrás */}
-        <div className="relative flex items-center justify-center w-full max-w-lg mx-auto" style={{height: "380px"}}>
-          {/* Flecha izquierda */}
-          <button
-            aria-label="Previous project"
-            onClick={prev}
-            className="absolute left-[-60px] top-1/2 transform -translate-y-1/2 bg-transparent flex items-center justify-center z-30"
-          >
-            <span className="bg-gray-300 dark:bg-gray-700 rounded-full p-2 shadow-lg text-3xl md:text-4xl hover:bg-gray-400 dark:hover:bg-gray-600 transition">
-              ←
-            </span>
-          </button>
-          {/* Imagen de previsualización ABSOLUTA detrás del televisor */}
-          <div
-            className="absolute left-1/2 top-[16.5%] w-[69%] h-[66%] transform -translate-x-1/2 z-10 flex items-center justify-center overflow-hidden"
-            style={{ pointerEvents: "none", borderRadius: "8px", background: "transparent" }}
-          >
-            <img
-              src={projectList[current].image}
-              alt={projectList[current].name}
-              className="w-full h-full object-cover"
-              style={{ borderRadius: "8px" }}
-            />
-          </div>
-          {/* Televisor marco ENCIMA de la imagen */}
-          <img
-            src="/televisor.png"
-            alt="TV Frame"
-            className="w-full object-contain relative z-20 pointer-events-none"
-            style={{ maxWidth: "500px" }}
-          />
-          {/* Flecha derecha */}
-          <button
-            aria-label="Next project"
-            onClick={next}
-            className="absolute right-[-60px] top-1/2 transform -translate-y-1/2 bg-transparent flex items-center justify-center z-30"
-          >
-            <span className="bg-gray-300 dark:bg-gray-700 rounded-full p-2 shadow-lg text-3xl md:text-4xl hover:bg-gray-400 dark:hover:bg-gray-600 transition">
-              →
-            </span>
-          </button>
-        </div>
+{/* Televisor marco con imagen de proyecto ajustada detrás */}
+<div className="relative flex items-center justify-center w-full max-w-lg mx-auto" style={{ height: "320px", maxWidth: "420px" }}>
+  {/* Flecha izquierda */}
+  <button
+    aria-label="Previous project"
+    onClick={prev}
+    className="absolute left-[-60px] top-1/2 transform -translate-y-1/2 bg-transparent flex items-center justify-center z-30"
+  >
+    <span className="bg-gray-300 dark:bg-gray-700 rounded-full p-2 shadow-lg text-3xl md:text-4xl hover:bg-gray-400 dark:hover:bg-gray-600 transition">
+      ←
+    </span>
+  </button>
+  {/* Imagen de previsualización ajustada y más elevada */}
+  <div
+    className="absolute left-1/2 top-[0%] w-[74%] h-[77%] transform -translate-x-1/2 z-10 flex items-center justify-center overflow-hidden"
+    style={{ pointerEvents: "none", borderRadius: "4px", background: "transparent" }}
+  >
+    <img
+      src={projectList[current].image}
+      alt={projectList[current].name}
+      className="w-full h-full object-cover"
+      style={{ borderRadius: "4px", objectFit: "cover" }}
+    />
+  </div>
+  {/* Televisor marco ENCIMA de la imagen */}
+  <img
+    src="/televisor.png"
+    alt="TV Frame"
+    className="w-full object-contain relative z-20 pointer-events-none"
+    style={{ maxWidth: "420px" }}
+  />
+  {/* Flecha derecha */}
+  <button
+    aria-label="Next project"
+    onClick={next}
+    className="absolute right-[-60px] top-1/2 transform -translate-y-1/2 bg-transparent flex items-center justify-center z-30"
+  >
+    <span className="bg-gray-300 dark:bg-gray-700 rounded-full p-2 shadow-lg text-3xl md:text-4xl hover:bg-gray-400 dark:hover:bg-gray-600 transition">
+      →
+    </span>
+  </button>
+</div>
+
 
         {/* Botón principal para ir al link */}
         <a
