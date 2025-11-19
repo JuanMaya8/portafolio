@@ -1,22 +1,54 @@
 @import "tailwindcss";
 
-/* VARIABLES BASE */
+/* LIGHT MODE */
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  /* Tonos de gris para light mode */
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-300: #d1d5db;
+  --gray-400: #9ca3af;
+  --gray-500: #6b7280;
+  --gray-600: #4b5563;
+  --gray-700: #374151;
+  --gray-800: #1f2937;
+  --gray-900: #111827;
 }
 
-/* MODO OSCURO ACTIVADO POR .dark EN <html> */
+/* DARK MODE suave (GitHub-like) */
 .dark {
-  --background: #0a0a0a;
-  --foreground: #ededed;
+  --background: #1a1b1e;    /* fondo base */
+  --foreground: #e6e7e9;    /* texto principal */
+
+  /* Tonos de gris/negro para dark mode */
+  --gray-100: #1c1c1e;
+  --gray-200: #2a2a2c;
+  --gray-300: #38383a;
+  --gray-400: #4a4a4c;
+  --gray-500: #5c5c5e;
+  --gray-600: #6e6e70;
+  --gray-700: #828285;
+  --gray-800: #969699;
+  --gray-900: #aaaaad;
 }
 
-/* FALLBACK SOLO SI EL USUARIO NO USA TU TOGGLE */
+/* FALLBACK si el usuario tiene dark mode por sistema */
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #1a1b1e;
+    --foreground: #e6e7e9;
+
+    --gray-100: #1c1c1e;
+    --gray-200: #2a2a2c;
+    --gray-300: #38383a;
+    --gray-400: #4a4a4c;
+    --gray-500: #5c5c5e;
+    --gray-600: #6e6e70;
+    --gray-700: #828285;
+    --gray-800: #969699;
+    --gray-900: #aaaaad;
   }
 }
 
@@ -25,4 +57,6 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  transition: background 0.3s ease, color 0.3s ease;
 }
+

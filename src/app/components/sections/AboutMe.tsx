@@ -1,5 +1,3 @@
-// components/sections/AboutMe.tsx
-
 "use client";
 import React from 'react';
 import Image from 'next/image';
@@ -10,26 +8,42 @@ const AboutMe: React.FC = () => {
   const { t } = useLanguage();
 
   return (
-    <section id="who-am-i" className="py-20 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 border-b-4 border-black dark:border-white">
+    <section
+      id="who-am-i"
+      style={{
+        background: "var(--background)",
+        color: "var(--foreground)",
+        borderBottom: "4px solid var(--gray-500)",
+      }}
+      className="py-20"
+    >
       <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl font-extrabold text-center mb-12 pb-2">
+        <h2
+          style={{ color: "var(--foreground)" }}
+          className="text-3xl font-extrabold text-center mb-12 pb-2"
+        >
           {t.aboutTitle} {/* Quien soy */}
         </h2>
-        
+
         <article className="space-y-6 text-lg leading-relaxed">
           {/* Párrafo 1 */}
-          <p>
-            {t.aboutText1} {/* Soy un futuro ingeniero de software que tiene muchas expectativas... */}
+          <p style={{ color: "var(--foreground)" }}>
+            {t.aboutText1}
           </p>
           {/* Párrafo 2 (Cita) */}
-          <blockquote className="border-l-4  pl-4 italic text-gray-600 dark:text-gray-300">
-            {t.aboutText2} {/* Me motiva entender cómo funcionan las cosas y mejorar lo que ya existe. */}
+          <blockquote
+            style={{
+              borderLeft: "4px solid var(--gray-400)",
+              color: "var(--gray-300)",
+            }}
+            className="pl-4 italic"
+          >
+            {t.aboutText2}
           </blockquote>
         </article>
-        
+
         {/* Sección de imágenes con orden responsive */}
         <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* En mobile: segunda imagen */}
           <div className="md:order-2 flex justify-center">
             <Image
               src="/manos_arriba.png"
@@ -37,10 +51,10 @@ const AboutMe: React.FC = () => {
               width={300}
               height={300}
               className="rounded-lg shadow-lg"
+              style={{ boxShadow: "0 10px 15px var(--gray-500)" }}
             />
           </div>
-          
-          {/* En mobile: tercera imagen */}
+
           <div className="md:order-3 flex justify-center">
             <Image
               src="/yo_2.png"
@@ -48,10 +62,10 @@ const AboutMe: React.FC = () => {
               width={300}
               height={300}
               className="rounded-lg shadow-lg"
+              style={{ boxShadow: "0 10px 15px var(--gray-500)" }}
             />
           </div>
 
-          {/* En mobile: primera imagen */}
           <div className="md:order-1 flex justify-center">
             <Image
               src="/yo_1.png"
@@ -59,6 +73,7 @@ const AboutMe: React.FC = () => {
               width={300}
               height={300}
               className="rounded-lg shadow-lg"
+              style={{ boxShadow: "0 10px 15px var(--gray-500)" }}
             />
           </div>
         </div>

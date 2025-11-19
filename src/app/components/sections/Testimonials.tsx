@@ -84,7 +84,7 @@ const Testimonials: React.FC = () => {
               className="p-6 bg-gray-50 dark:bg-gray-800 rounded-lg shadow-md border-t-4"
             >
               <blockquote className="italic text-gray-700 dark:text-gray-300 mb-4 h-32">
-                "{getTranslatedQuote(testimonialList[current].name, lang)}"
+                &quot;{getTranslatedQuote(testimonialList[current].name, lang)}&quot;
               </blockquote>
 
               <figcaption className="pt-4 border-t border-gray-200 dark:border-gray-700 flex items-center">
@@ -133,7 +133,7 @@ const Testimonials: React.FC = () => {
               className="p-6 bg-gray-50 dark:bg-gray-800 rounded-lg shadow-md border-t-4"
             >
               <blockquote className="italic text-gray-700 dark:text-gray-300 mb-4 h-32">
-                "{getTranslatedQuote(testimonial.name, lang)}"
+                &quot;{getTranslatedQuote(testimonial.name, lang)}&quot;
               </blockquote>
 
               <figcaption className="pt-4 border-t border-gray-200 dark:border-gray-700 flex items-center">
