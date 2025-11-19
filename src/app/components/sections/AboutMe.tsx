@@ -1,5 +1,3 @@
-// components/sections/AboutMe.tsx
-
 "use client";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
@@ -37,11 +35,20 @@ const AboutMe: React.FC = () => {
       className="py-20"
     >
       <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 style={{ color: "var(--foreground)" }} className="text-3xl font-extrabold text-center mb-12 pb-2">
+        <h2
+          style={{ color: "var(--foreground)" }}
+          className="text-3xl font-extrabold text-center mb-12 pb-2"
+        >
           {t.aboutTitle}
         </h2>
         <article className="space-y-6 text-lg leading-relaxed">
-          <p style={{ color: "var(--foreground)" }}>{t.aboutText1}</p>
+          <p
+            className={`${
+              !isDark ? "text-black md:text-[var(--foreground)]" : "text-[var(--foreground)]"
+            }`}
+          >
+            {t.aboutText1}
+          </p>
           <blockquote
             style={{
               borderLeft: `4px solid ${isDark ? "var(--gray-400)" : blockquoteBorderLight}`,
