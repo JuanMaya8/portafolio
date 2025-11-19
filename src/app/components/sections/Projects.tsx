@@ -13,7 +13,7 @@ interface Project {
 const projectList: Project[] = [
   { name: "Project 1", image: "/proyecto_1.png", link: "https://maps-nine-pearl.vercel.app/" },
   { name: "Project 2", image: "/proyecto_2.png", link: "https://responsive-taller-five.vercel.app/" },
-  { name: "Project 3", image: "/proyecto_3.png", link: "https://shoppasto-microservices.vercel.app/" },
+  { name: "Project 3", image: "/proyecto_3.jpg", link: "https://shoppasto-microservices.vercel.app/" },
   { name: "Project 4", image: "/proyecto_4.png", link: "https://boleto-disenooo.vercel.app/" },
   { name: "Project 5", image: "/proyecto_5.png", link: "https://diseno-taller7-brfm.vercel.app/" },
 ];
@@ -71,10 +71,11 @@ const Projects: React.FC = () => {
           className="relative flex items-center justify-center w-full max-w-lg mx-auto md:max-w-lg"
           style={{ height: "320px" }}
         >
+          {/* Flechas solo en escritorio */}
           <button
             aria-label="Previous project"
             onClick={prev}
-            className="absolute left-[-50px] top-1/2 transform -translate-y-1/2 flex items-center justify-center z-30"
+            className="hidden md:flex absolute left-[-50px] top-1/2 transform -translate-y-1/2 items-center justify-center z-30"
           >
             <span
               className={`rounded-full p-2 shadow-lg text-3xl md:text-4xl transition ${
@@ -94,7 +95,7 @@ const Projects: React.FC = () => {
               width: "74%",
               height: "92%",
               top: "-2%",
-              left: "87%",
+              left: "50%",
               transform: "translateX(-50%)",
             }}
           >
@@ -114,10 +115,11 @@ const Projects: React.FC = () => {
             style={{ maxWidth: "420px" }}
           />
 
+          {/* Flechas solo en escritorio */}
           <button
             aria-label="Next project"
             onClick={next}
-            className="absolute right-[-50px] top-1/2 transform -translate-y-1/2 flex items-center justify-center z-30"
+            className="hidden md:flex absolute right-[-50px] top-1/2 transform -translate-y-1/2 items-center justify-center z-30"
           >
             <span
               className={`rounded-full p-2 shadow-lg text-3xl md:text-4xl transition ${
@@ -152,19 +154,52 @@ const Projects: React.FC = () => {
           ))}
         </div>
 
-        {/* Botón debajo de las tecnologías: solo visible en móvil */}
-        <div className="md:hidden flex items-center w-full mt-2 relative z-10 justify-between">
-          <img src="/mano_derecha.png" alt="Left avatar mobile" className="w-32" />
-          <a
-            href={projectList[current].link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mx-auto w-36 text-center font-bold py-2 px-4 rounded-full transition-colors block md:hidden"
-            style={{ background: accentColor, color: "#fff" }}
-          >
-            {t.clickMe}
-          </a>
-          <img src="/mano_izquierda.png" alt="Right avatar mobile" className="w-32" />
+        {/* Sección móvil: Botón "Tocame" + Flechas debajo */}
+        <div className="md:hidden flex flex-col items-center w-full mt-4 relative z-10 gap-4">
+          {/* Botón con avatares */}
+          <div className="flex items-center justify-between w-full px-4">
+            <img src="/mano_derecha.png" alt="Left avatar mobile" className="w-28" />
+            <a
+              href={projectList[current].link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-32 text-center font-bold py-2 px-4 rounded-full transition-colors"
+              style={{ background: accentColor, color: "#fff" }}
+            >
+              {t.clickMe}
+            </a>
+            <img src="/mano_izquierda.png" alt="Right avatar mobile" className="w-28" />
+          </div>
+
+          {/* Flechas debajo del botón - solo móvil */}
+          <div className="flex items-center justify-center gap-6">
+            <button
+              aria-label="Previous project"
+              onClick={prev}
+              className="flex items-center justify-center z-30"
+            >
+              <span
+                className={`rounded-full p-2 shadow-lg text-2xl transition ${
+                  isDark ? "bg-gray-600 hover:bg-gray-500" : "bg-gray-300 hover:bg-gray-400"
+                }`}
+              >
+                ←
+              </span>
+            </button>
+            <button
+              aria-label="Next project"
+              onClick={next}
+              className="flex items-center justify-center z-30"
+            >
+              <span
+                className={`rounded-full p-2 shadow-lg text-2xl transition ${
+                  isDark ? "bg-gray-600 hover:bg-gray-500" : "bg-gray-300 hover:bg-gray-400"
+                }`}
+              >
+                →
+              </span>
+            </button>
+          </div>
         </div>
       </div>
     </section>
