@@ -4,9 +4,8 @@
 import React, { useState, useRef } from 'react';
 import Image from 'next/image';
 import { useLanguage } from '../context/LanguageContext';
-import { CameraIcon, ChatBubbleOvalLeftEllipsisIcon, FireIcon } from '@heroicons/react/24/outline'; 
+import { motion, AnimatePresence } from 'framer-motion';
 
-// Componente gestiona un array de imágenes 
 function Carousel() {
   const images: string[] = [
     '/carrusel_1.png',
@@ -19,12 +18,21 @@ function Carousel() {
   ];
 
   const [index, setIndex] = useState(0);
+  const [direction, setDirection] = useState(0);
+
   const touchStartX = useRef<number | null>(null);
   const touchCurrentX = useRef<number | null>(null);
-  const threshold = 50; 
+  const threshold = 50;
 
-  const prev = () => setIndex((i) => (i - 1 + images.length) % images.length);
-  const next = () => setIndex((i) => (i + 1) % images.length);
+  const prev = () => {
+    setDirection(-1);
+    setIndex((i) => (i - 1 + images.length) % images.length);
+  };
+
+  const next = () => {
+    setDirection(1);
+    setIndex((i) => (i + 1) % images.length);
+  };
 
   const onTouchStart = (e: React.TouchEvent) => {
     touchStartX.current = e.touches[0].clientX;
@@ -39,10 +47,17 @@ function Carousel() {
     if (touchStartX.current == null || touchCurrentX.current == null) return;
     const dx = touchCurrentX.current - touchStartX.current;
     if (Math.abs(dx) > threshold) {
-      if (dx < 0) next(); else prev();
+      if (dx < 0) next();
+      else prev();
     }
     touchStartX.current = null;
     touchCurrentX.current = null;
+  };
+
+  const variants = {
+    enter: (direction: number) => ({ x: direction > 0 ? 200 : -200, opacity: 0 }),
+    center: { x: 0, opacity: 1 },
+    exit: (direction: number) => ({ x: direction > 0 ? -200 : 200, opacity: 0 }),
   };
 
   return (
@@ -53,9 +68,20 @@ function Carousel() {
         onTouchMove={onTouchMove}
         onTouchEnd={onTouchEnd}
       >
-        <Image src={images[index]} alt={`Carrusel imagen ${index + 1}`} width={900} height={600} className="w-full h-auto object-cover" />
+        <AnimatePresence initial={false} custom={direction}>
+          <motion.div
+            key={index}
+            custom={direction}
+            variants={variants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={{ duration: 0.4 }}
+          >
+            <Image src={images[index]} alt={`Carrusel imagen ${index + 1}`} width={900} height={600} className="w-full h-auto object-cover" />
+          </motion.div>
+        </AnimatePresence>
       </div>
-
 
       <button
         onClick={prev}
@@ -77,7 +103,7 @@ function Carousel() {
         {images.map((_, i) => (
           <button
             key={i}
-            onClick={() => setIndex(i)}
+            onClick={() => { setDirection(i > index ? 1 : -1); setIndex(i); }}
             aria-label={`Ir a la imagen ${i + 1}`}
             className={`w-2 h-2 rounded-full ${i === index ? 'bg-indigo-600' : 'bg-gray-300 dark:bg-gray-600'}`}
           />
@@ -90,62 +116,26 @@ function Carousel() {
 const Hobbies: React.FC = () => {
   const { t } = useLanguage();
 
-  // Comentario: Lista de hobbies 
-  const hobbyList = [
-    { icon: <CameraIcon className="w-8 h-8 " />, title: t.hobby1Title },
-    { icon: <ChatBubbleOvalLeftEllipsisIcon className="w-8 h-8 " />, title: t.hobby2Title },
-    { icon: <FireIcon className="w-8 h-8 " />, title: t.hobby3Title },
-  ];
-
-
   return (
     <section id="off-work" className="py-20 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100 border-b-4 border-black dark:border-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <hgroup className="text-center mb-12">
-          <h2 className="text-3xl font-extrabold  pb-2 inline-block">
-            {t.hobbiesTitle} {/* Un poco de mi fuera de una maquina */}
+          <h2 className="text-3xl font-extrabold pb-2 inline-block">
+            {t.hobbiesTitle}
           </h2>
-          <p className="mt-4 text-xl text-gray-600 dark:text-gray-300">
-            {t.hobbiesSubtitle} {/* Mi lado humano. Porque aunque soy ingeniero... */}
-          </p>
         </hgroup>
-        
+
         {/* Carrusel después del título */}
-        <div className="w-full flex flex-col items-center mb-8">
-          {/* Estructura de datos del carrusel - puedes añadir más rutas en el array */}
-          {/* La primera imagen será '/carrusel_1.png' */}
-          {/* Dejo espacio para otras imágenes: '/carrusel_2.png', '/carrusel_3.png' */}
-          {/* Si no existen, Next/Image dará error en build; asegúrate de añadir los archivos en public/ */}
+        <div className="w-full flex flex-col items-center mb-12">
           <Carousel />
         </div>
 
-        {/* Texto y lista de hobbies debajo del carrusel */}
-        <article className="space-y-6 text-lg leading-relaxed">
-          <p>
-            {t.hobbiesText1} {/* Me gusta desconectarme para reconectarme... */}
-          </p>
-          
-          <p>
-            {t.hobbiesText2} {/* Esos espacios me ayudan a pensar mejor... */}
-          </p>
-          
-          <p className="font-semibold  dark:text-indigo-400">
-            {t.hobbiesText3} {/* Porque al final, programamos para personas... */}
-          </p>
-
-          {/* Lista hobbies */}
-          <menu className="flex flex-wrap gap-4 pt-4">
-            {hobbyList.map((hobby, index) => (
-              <li key={index} className="flex items-center space-x-2 p-3 bg-white dark:bg-gray-900 rounded-xl shadow-lg">
-                {/* Icono */}
-                {hobby.icon}
-                {/* Descripción del hobby */}
-                <span className="font-medium text-gray-800 dark:text-gray-200">
-                  {hobby.title}
-                </span>
-              </li>
-            ))}
-          </menu>
+        {/* Texto debajo del carrusel */}
+        <article className="space-y-6 text-lg leading-relaxed text-center max-w-3xl mx-auto">
+          <p>{t.hobbiesSubtitle}</p>
+          <p>{t.hobbiesText1}</p>
+          <p>{t.hobbiesText2}</p>
+          <p className="font-semibold dark:text-indigo-400">{t.hobbiesText3}</p>
         </article>
       </div>
     </section>
