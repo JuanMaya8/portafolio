@@ -36,8 +36,9 @@ const AboutMe: React.FC = () => {
     >
       <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2
-          style={{ color: "var(--foreground)" }}
-          className="text-3xl font-extrabold text-center mb-12 pb-2"
+          className={`text-3xl font-extrabold text-center mb-12 pb-2 ${
+            !isDark ? "text-black md:text-[var(--foreground)]" : "text-[var(--foreground)]"
+          }`}
         >
           {t.aboutTitle}
         </h2>
