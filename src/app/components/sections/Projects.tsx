@@ -13,7 +13,7 @@ interface Project {
 const projectList: Project[] = [
   { name: "Project 1", image: "/proyecto_1.png", link: "https://maps-nine-pearl.vercel.app/" },
   { name: "Project 2", image: "/proyecto_2.png", link: "https://responsive-taller-five.vercel.app/" },
-  { name: "Project 3", image: "/proyecto_3.png", link: "https://shoppasto-microservices.vercel.app/" },
+  { name: "Project 3", image: "/proyecto_3.jpg", link: "https://shoppasto-microservices.vercel.app/" },
   { name: "Project 4", image: "/proyecto_4.png", link: "https://boleto-disenooo.vercel.app/" },
   { name: "Project 5", image: "/proyecto_5.png", link: "https://diseno-taller7-brfm.vercel.app/" },
 ];
@@ -69,7 +69,7 @@ const Projects: React.FC = () => {
         {/* Televisor con imagen */}
         <div
           className="relative flex items-center justify-center w-full max-w-lg mx-auto md:max-w-lg"
-          style={{ height: "320px" }} // Altura estándar escritorio
+          style={{ height: "320px" }}
         >
           <button
             aria-label="Previous project"
@@ -85,15 +85,23 @@ const Projects: React.FC = () => {
             </span>
           </button>
 
-          {/* Contenedor de la imagen del proyecto */}
+          {/* Contenedor de la imagen del proyecto - cubre todo el área visible */}
           <div
-            className="absolute left-1/2 top-[8%] w-[68%] h-[72%] transform -translate-x-1/2 z-10 flex items-center justify-center overflow-hidden rounded-lg"
-            style={{ pointerEvents: "none", borderRadius: "8px" }}
+            className="absolute left-1/2 transform -translate-x-1/2 z-10 flex items-center justify-center overflow-hidden rounded-lg"
+            style={{
+              pointerEvents: "none",
+              borderRadius: "8px",
+              width: "74%",
+              height: "92%",
+              top: "-2%",
+              left: "87%",
+              transform: "translateX(-50%)",
+            }}
           >
             <img
               src={projectList[current].image}
               alt={projectList[current].name}
-              className="w-full h-full object-contain"
+              className="w-full h-full object-cover"
               style={{ borderRadius: "8px" }}
             />
           </div>
