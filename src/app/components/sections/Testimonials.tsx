@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useLanguage } from "../context/LanguageContext";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
@@ -14,6 +14,16 @@ interface Testimonial {
 const Testimonials: React.FC = () => {
   const { t, lang } = useLanguage();
   const [current, setCurrent] = useState(0);
+  const [isDark, setIsDark] = useState(false);
+
+  useEffect(() => {
+    const observer = new MutationObserver(() => {
+      setIsDark(document.documentElement.classList.contains("dark"));
+    });
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
+    setIsDark(document.documentElement.classList.contains("dark"));
+    return () => observer.disconnect();
+  }, []);
 
   const testimonialList: Testimonial[] = [
     {
@@ -36,34 +46,43 @@ const Testimonials: React.FC = () => {
     },
   ];
 
-  const getTranslatedQuote = (name: string, lang: "es" | "en") => {
-    if (lang === "es") {
-      if (name === "Jack Limas")
-        return "Trabajo honesto, comprometido y con visión de futuro. Un activo en cualquier equipo.";
-      if (name === "Juan Mora")
-        return "Siempre sabe escuchar, colaborar y tiene una comunicación que genera confianza en el silencio.";
-      if (name === "David Ramirez")
-        return "La velocidad y la compresión del problema demuestran su profesionalismo. Siempre cumple el propósito.";
-    }
-    const testimonial = testimonialList.find((t) => t.name === name);
-    return testimonial ? testimonial.quote : "";
-  };
+  const getTranslatedQuote = (name: string, lang: "es" | "en") => {
+    if (lang === "es") {
+      if (name === "Jack Limas")
+        return "Trabajo honesto, comprometido y con visión de futuro. Un activo en cualquier equipo.";
+      if (name === "Juan Mora")
+        return "Siempre sabe escuchar, colaborar y tiene una comunicación que genera confianza en el silencio.";
+      if (name === "David Ramirez")
+        return "La velocidad y la compresión del problema demuestran su profesionalismo. Siempre cumple el propósito.";
+    }
+    const testimonial = testimonialList.find((t) => t.name === name);
+    return testimonial ? testimonial.quote : "";
+  };
 
   const next = () => setCurrent((prev) => (prev + 1) % testimonialList.length);
   const prev = () => setCurrent((prev) => (prev - 1 + testimonialList.length) % testimonialList.length);
+
+  // Colores personalizados para modo claro
+  const backgroundLight = "#f0f4ff"; // azul pastel claro
+  const borderLight = "#a3bffa"; // azul suave para borde
+  const textLight = "#1e293b"; // azul oscuro para texto
+  const quoteLight = "#374151"; // gris oscuro para citas
 
   return (
     <section
       id="testimonials"
       style={{
-        background: 'var(--background)',
-        color: 'var(--foreground)',
-        borderBottom: '4px solid var(--gray-500)',
+        background: isDark ? "var(--background)" : backgroundLight,
+        color: isDark ? "var(--foreground)" : textLight,
+        borderBottom: isDark ? "4px solid var(--gray-500)" : `4px solid ${borderLight}`,
       }}
       className="py-20"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 style={{ color: 'var(--foreground)' }} className="text-3xl font-extrabold text-center mb-12 pb-2">
+        <h2
+          style={{ color: isDark ? "var(--foreground)" : textLight }}
+          className="text-3xl font-extrabold text-center mb-12 pb-2"
+        >
           {t.testimonials}
         </h2>
 
@@ -77,12 +96,15 @@ const Testimonials: React.FC = () => {
               exit={{ opacity: 0, x: -50 }}
               transition={{ duration: 0.3 }}
               style={{
-                background: 'var(--gray-200)',
-                borderTop: '4px solid var(--indigo-500)',
+                background: isDark ? "var(--gray-700)" : "var(--gray-200)",
+                borderTop: isDark ? "4px solid var(--indigo-500)" : `4px solid ${borderLight}`,
               }}
               className="p-6 rounded-lg shadow-md"
             >
-              <blockquote style={{ color: 'var(--foreground-dark)' }} className="italic mb-4 h-32">
+              <blockquote
+                style={{ color: isDark ? "var(--foreground-dark)" : quoteLight }}
+                className="italic mb-4 h-32"
+              >
                 &quot;{getTranslatedQuote(testimonialList[current].name, lang)}&quot;
               </blockquote>
 
@@ -98,7 +120,10 @@ const Testimonials: React.FC = () => {
                   </div>
                 )}
                 <div>
-                  <cite style={{ color: 'var(--indigo-500)' }} className="not-italic font-bold text-lg block">
+                  <cite
+                    style={{ color: isDark ? "var(--indigo-400)" : "#4f46e5" }}
+                    className="not-italic font-bold text-lg block"
+                  >
                     {testimonialList[current].name}
                   </cite>
                 </div>
@@ -108,10 +133,24 @@ const Testimonials: React.FC = () => {
 
           {/* Controles */}
           <div className="flex justify-between mt-4">
-            <button style={{ background: 'var(--gray-300)', color: 'var(--foreground)' }} className="px-4 py-2 rounded-lg" onClick={prev}>
+            <button
+              style={{
+                background: isDark ? "var(--gray-700)" : "var(--gray-300)",
+                color: isDark ? "var(--foreground)" : textLight,
+              }}
+              className="px-4 py-2 rounded-lg"
+              onClick={prev}
+            >
               ←
             </button>
-            <button style={{ background: 'var(--gray-300)', color: 'var(--foreground)' }} className="px-4 py-2 rounded-lg" onClick={next}>
+            <button
+              style={{
+                background: isDark ? "var(--gray-700)" : "var(--gray-300)",
+                color: isDark ? "var(--foreground)" : textLight,
+              }}
+              className="px-4 py-2 rounded-lg"
+              onClick={next}
+            >
               →
             </button>
           </div>
@@ -123,12 +162,15 @@ const Testimonials: React.FC = () => {
             <article
               key={index}
               style={{
-                background: 'var(--gray-200)',
-                borderTop: '4px solid var(--indigo-500)',
+                background: isDark ? "var(--gray-700)" : "var(--gray-200)",
+                borderTop: isDark ? "4px solid var(--indigo-500)" : `4px solid ${borderLight}`,
               }}
               className="p-6 rounded-lg shadow-md"
             >
-              <blockquote style={{ color: 'var(--foreground-dark)' }} className="italic mb-4 h-32">
+              <blockquote
+                style={{ color: isDark ? "var(--foreground-dark)" : quoteLight }}
+                className="italic mb-4 h-32"
+              >
                 &quot;{getTranslatedQuote(testimonial.name, lang)}&quot;
               </blockquote>
 
@@ -139,7 +181,10 @@ const Testimonials: React.FC = () => {
                   </div>
                 )}
                 <div>
-                  <cite style={{ color: 'var(--indigo-500)' }} className="not-italic font-bold text-lg block">
+                  <cite
+                    style={{ color: isDark ? "var(--indigo-400)" : "#4f46e5" }}
+                    className="not-italic font-bold text-lg block"
+                  >
                     {testimonial.name}
                   </cite>
                 </div>

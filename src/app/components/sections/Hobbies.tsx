@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { useLanguage } from '../context/LanguageContext';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -120,7 +120,7 @@ function Carousel() {
             onClick={() => { setDirection(i > index ? 1 : -1); setIndex(i); }}
             aria-label={`Ir a la imagen ${i + 1}`}
             style={{
-              backgroundColor: i === index ? 'var(--indigo-500)' : 'var(--gray-400)',
+              backgroundColor: i === index ? '#3eb489' /* verde menta */ : '#a1d8c3' /* verde menta más claro */,
             }}
             className="w-2 h-2 rounded-full"
           />
@@ -132,20 +132,41 @@ function Carousel() {
 
 const Hobbies: React.FC = () => {
   const { t } = useLanguage();
+  const [isDark, setIsDark] = useState(false);
+
+  React.useEffect(() => {
+    const observer = new MutationObserver(() => {
+      setIsDark(document.documentElement.classList.contains("dark"));
+    });
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
+
+    // Initial check
+    setIsDark(document.documentElement.classList.contains("dark"));
+
+    return () => observer.disconnect();
+  }, []);
+
+  // Colores modo claro menta
+  const backgroundLight = '#d9f0e1'; // verde menta pálido
+  const textLight = '#2f6b58'; // verde bosque oscuro para texto
+  const borderLight = '#7ac79f'; // verde menta medio para borde
 
   return (
     <section
       id="off-work"
-      style={{
-        background: 'var(--background)',
-        color: 'var(--foreground)',
-        borderBottom: '4px solid var(--gray-500)',
-      }}
       className="py-20"
+      style={{
+        background: isDark ? 'var(--background)' : backgroundLight,
+        color: isDark ? 'var(--foreground)' : textLight,
+        borderBottom: isDark ? '4px solid var(--gray-500)' : `4px solid ${borderLight}`,
+      }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <hgroup className="text-center mb-12">
-          <h2 style={{ color: 'var(--foreground)' }} className="text-3xl font-extrabold pb-2 inline-block">
+          <h2
+            style={{ color: isDark ? 'var(--foreground)' : '#1e4731' }}
+            className="text-3xl font-extrabold pb-2 inline-block"
+          >
             {t.hobbiesTitle}
           </h2>
         </hgroup>
@@ -154,11 +175,16 @@ const Hobbies: React.FC = () => {
           <Carousel />
         </div>
 
-        <article className="space-y-6 text-lg leading-relaxed text-center max-w-3xl mx-auto">
+        <article
+          className="space-y-6 text-lg leading-relaxed text-center max-w-3xl mx-auto"
+          style={{ color: isDark ? 'var(--foreground)' : '#396753' }}
+        >
           <p>{t.hobbiesSubtitle}</p>
           <p>{t.hobbiesText1}</p>
           <p>{t.hobbiesText2}</p>
-          <p style={{ color: 'var(--indigo-500)' }} className="font-semibold">{t.hobbiesText3}</p>
+          <p style={{ color: isDark ? 'var(--indigo-500)' : '#5fa87a' }} className="font-semibold">
+            {t.hobbiesText3}
+          </p>
         </article>
       </div>
     </section>
