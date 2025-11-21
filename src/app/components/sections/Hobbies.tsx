@@ -13,6 +13,7 @@ function Carousel() {
     '/carrusel_5.jpg',
     '/carrusel_6.jpg',
     '/carrusel_7.jpg',
+    '/carrusel_8.jpeg',
   ];
 
   const [index, setIndex] = useState(0);
